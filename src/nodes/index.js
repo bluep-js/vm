@@ -30,10 +30,21 @@ const StructToObject = require('./struct/toobject')
 const StructFromObject = require('./struct/fromobject')
 
 const NumberEq = require('./number/eq')
+const NumberAssign = require('./number/assign')
 const NumberPlus = require('./number/plus')
+const NumberMinus = require('./number/minus')
 const NumberToString = require('./number/number2string')
 const NumberIsEven = require('./number/iseven')
 const NumberIsGreater = require('./number/gt')
+const NumberIsLess = require('./number/lt')
+const NumberMultiply = require('./number/multiply')
+const NumberDivide = require('./number/divide')
+const NumberRemainder = require('./number/remainder')
+const NumberExponentiation = require('./number/exponentiation')
+const NumberIncrement = require('./number/increment')
+const NumberDecrement = require('./number/decrement')
+
+
 
 const StringEq = require('./string/eq')
 const StringAppend = require('./string/append')
@@ -69,6 +80,7 @@ const Nodes = {
   VariableSet,
 
   StringAppend,
+  StringEq,
 
   EnumToString,
   EnumEqual,
@@ -89,10 +101,23 @@ const Nodes = {
   BooleanEq,
 
   NumberEq,
+  NumberAssign,
   NumberPlus,
+  NumberMinus,
   NumberToString,
   NumberIsEven,
   NumberIsGreater,
+  NumberIsLess,
+  NumberMultiply,
+  NumberDivide,
+  NumberExponentiation,
+  NumberRemainder,
+  NumberIncrement,
+  NumberDecrement,
+ 
+  
+
+
 
   IsUndefined,
 
