@@ -13,16 +13,22 @@ class NumberToString extends AbstractNode {
         number: {
           code: 'number',
           name: 'Number',
-          type: 'basic/number'
+          type: 'basic/template',
+          template: 'NumberFloat'
         }
       },
       outputs: {
         string: {
           code: 'string',
           name: 'String',
-          type: 'basic/string'
+          type: 'basic/string',
         }
-      }
+      },
+      templates: {
+        NumberFloat: {
+          allow: ['basic/number','basic/float']
+        } 
+      },
     }
   }
 

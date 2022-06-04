@@ -1,11 +1,11 @@
-const AbstractNode = require('../abstract')
+const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
 
-class NumberEq extends AbstractNode {
+class FloatEq extends AbstractNode {
 
   static metadata() {
     return {
-      name: 'A === B',
-      code: 'number/eq',
+      name: 'A. === B.',
+      code: 'float/eq',
       type: 'modifier',
       deleteable: true,
       addable: true,
@@ -13,26 +13,20 @@ class NumberEq extends AbstractNode {
         valA: {
           code: 'valA',
           name: 'A',
-          type: 'basic/number'
+          type: 'basic/float'
         },
         valB: {
           code: 'valB',
           name: 'B',
-          type: 'basic/number'
+          type: 'basic/float'
         }
       },
       outputs: {
         result: {
           code: 'result',
           name: 'Result',
-          type: 'basic/boolean',
-          template: 'NumberFloat'
+          type: 'basic/boolean'
         }
-      },
-      templates: {
-        NumberFloat: {
-          allow: ['basic/number','basic/float','basic/boolean']
-        } 
       },
     }
   }
@@ -43,4 +37,4 @@ class NumberEq extends AbstractNode {
   }
 }
 
-module.exports = NumberEq
+module.exports = FloatEq

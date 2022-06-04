@@ -44,10 +44,19 @@ const NumberExponentiation = require('./number/exponentiation')
 const NumberIncrement = require('./number/increment')
 const NumberDecrement = require('./number/decrement')
 
-
+const FloatPlus = require('./float/plusFloat')
+const FloatMinus = require('./float/minusFloat')
+const FloatAssign = require('./float/assignFloat')
+const FloatDivide = require('./float/divideFloat')
+const FloatMultiply = require('./float/multiplyFloat')
+const FloatEq = require('./float/eqFloat')
+const FloatGt = require('./float/gtFloat')
+const FloatLt = require('./float/ltFloat')
+/* const MathRound = require('./float/round') */
 
 const StringEq = require('./string/eq')
 const StringAppend = require('./string/append')
+const StringToUpperCase = require('./string/toUpperCase')
 
 const DatetimeCreate = require('./datetime/create')
 const DatetimeUnwrap = require('./datetime/unwrap')
@@ -81,6 +90,7 @@ const Nodes = {
 
   StringAppend,
   StringEq,
+  StringToUpperCase,
 
   EnumToString,
   EnumEqual,
@@ -115,8 +125,15 @@ const Nodes = {
   NumberIncrement,
   NumberDecrement,
  
-  
-
+  FloatPlus,
+  FloatMinus,
+  FloatAssign, 
+  FloatDivide,
+  FloatMultiply,
+  FloatEq,
+  FloatGt,
+  FloatLt,
+/*   MathRound, */
 
 
   IsUndefined,
@@ -127,3 +144,14 @@ const Nodes = {
 }
 
 module.exports = Nodes
+
+
+
+/* 
+async execute(inputs) {
+  this.debug('execute', inputs)
+  const ret = dayjs(inputs)
+  this.setOutput('datetime', ret)
+}
+}
+ */

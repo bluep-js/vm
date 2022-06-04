@@ -18,32 +18,29 @@ class NumberRemainder extends AbstractNode {
         valB: {
           code: 'valB',
           name: 'B',
-          type: 'basic/number',
-          multiple: 'A'
+          type: 'basic/number'
         }
       },
       outputs: {
         result: {
           code: 'result',
           name: 'Result',
-          type: 'basic/number'
+          type: 'basic/template',
+          template: 'NumberFloat'
         }
       },
-      multiples: {
-        A: {
-          value: 1,
-          min: 1
-        }
-      }
+      templates: {
+        NumberFloat: {
+          allow: ['basic/number','basic/float','basic/string']
+        } 
+      },
+    
     }
   }
 
   async execute(inputs) {
     this.debug('execute', inputs)
-    let ret = inputs.valA
-    Object.keys(inputs).forEach(inp => {
-      if (inp.startsWith('valB')) ret %= inputs[inp]
-    })
+    const ret = inputs.valA % inputs.valB
     this.setOutput('result', ret)
   }
 }

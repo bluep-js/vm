@@ -26,15 +26,22 @@ class NumberPlus extends AbstractNode {
         result: {
           code: 'result',
           name: 'Result',
-          type: 'basic/number'
+          type: 'basic/template',
+          template: 'NumberFloat'
         }
+      },
+      templates: {
+        NumberFloat: {
+          allow: ['basic/number','basic/float','basic/string']
+        } 
       },
       multiples: {
         A: {
           value: 1,
           min: 1
         }
-      }
+      },
+     
     }
   }
 

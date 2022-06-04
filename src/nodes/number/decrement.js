@@ -20,9 +20,15 @@ class NumberDecrement extends AbstractNode {
         result: {
           code: 'result',
           name: 'Result',
-          type: 'basic/number'
+          type: 'basic/template',
+          template: 'NumberFloat'
         }
-      },  
+      },
+      templates: {
+        NumberFloat: {
+          allow: ['basic/number','basic/float','basic/string']
+        } 
+      },
 
      
 
