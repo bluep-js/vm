@@ -52,11 +52,22 @@ const FloatMultiply = require('./float/multiplyFloat')
 const FloatEq = require('./float/eqFloat')
 const FloatGt = require('./float/gtFloat')
 const FloatLt = require('./float/ltFloat')
-/* const MathRound = require('./float/round') */
+const FloatToFixed = require('./float/ToFixed')
 
+const MathPi = require('./math/MathPi')
+const MathAbs = require('./math/MathAbs')
+const MathSqrt = require('./math/MathSqrt')
+ 
 const StringEq = require('./string/eq')
 const StringAppend = require('./string/append')
 const StringToUpperCase = require('./string/toUpperCase')
+const StringToLowerCase = require('./string/toLowerCase')
+const CharAt = require('./string/CharAt')
+const StringRepeat = require('./string/Repeat')
+const IndexOf = require('./string/IndexOf')
+const StringLength = require('./string/Length')
+const StringLastIndexOf = require('./string/LastIndexOf')
+
 
 const DatetimeCreate = require('./datetime/create')
 const DatetimeUnwrap = require('./datetime/unwrap')
@@ -91,6 +102,16 @@ const Nodes = {
   StringAppend,
   StringEq,
   StringToUpperCase,
+  StringToLowerCase,
+  CharAt,
+  StringRepeat,
+  IndexOf,
+  StringLength,
+  StringLastIndexOf,
+
+  MathPi,
+  MathAbs,
+  MathSqrt,
 
   EnumToString,
   EnumEqual,
@@ -133,7 +154,10 @@ const Nodes = {
   FloatEq,
   FloatGt,
   FloatLt,
-/*   MathRound, */
+  FloatToFixed,
+
+ 
+ 
 
 
   IsUndefined,
@@ -146,12 +170,3 @@ const Nodes = {
 module.exports = Nodes
 
 
-
-/* 
-async execute(inputs) {
-  this.debug('execute', inputs)
-  const ret = dayjs(inputs)
-  this.setOutput('datetime', ret)
-}
-}
- */

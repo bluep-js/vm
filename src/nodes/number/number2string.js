@@ -27,8 +27,8 @@ class NumberToString extends AbstractNode {
       templates: {
         NumberFloat: {
           allow: ['basic/number','basic/float']
-        } 
-      },
+        }
+      }
     }
   }
 

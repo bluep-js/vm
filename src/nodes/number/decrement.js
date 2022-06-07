@@ -9,7 +9,7 @@ class NumberDecrement extends AbstractNode {
       type: 'modifier',
       deleteable: true,
       addable: true,
-       inputs: {
+      inputs: {
         result: {
           code: 'result',
           name: 'Result',
@@ -20,25 +20,16 @@ class NumberDecrement extends AbstractNode {
         result: {
           code: 'result',
           name: 'Result',
-          type: 'basic/template',
-          template: 'NumberFloat'
+          type: 'basic/number'
         }
       },
-      templates: {
-        NumberFloat: {
-          allow: ['basic/number','basic/float','basic/string']
-        } 
-      },
-
-     
-
     }
   }
 
 
   async execute(inputs) {
     this.debug('execute', inputs)
-    this.setOutput('result', inputs.result-1)
+    this.setOutput('result', inputs.result - 1)
   }
 
 
@@ -46,6 +37,6 @@ class NumberDecrement extends AbstractNode {
 
 
 
- 
+
 
 module.exports = NumberDecrement

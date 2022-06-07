@@ -26,14 +26,8 @@ class FloatDivide extends AbstractNode {
         result: {
           code: 'result',
           name: 'Result',
-          type: 'basic/template',
-          template: 'NumberFloat'
+          type: 'basic/float'
         }
-      },
-      templates: {
-        NumberFloat: {
-          allow: ['basic/number','basic/float']
-        } 
       },
       multiples: {
         A: {

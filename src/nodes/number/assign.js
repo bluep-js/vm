@@ -25,17 +25,12 @@ class NumberAssign extends AbstractNode {
         result: {
           code: 'result',
           name: 'Result',
-          type: 'basic/template',
-          template: 'NumberFloat'
+          type: 'basic/number'
         }
-      },
-      templates: {
-        NumberFloat: {
-          allow: ['basic/number','basic/float','basic/string']
-        } 
       },
     }
   }
+
 
   async execute(inputs) {
     this.debug('execute', inputs)

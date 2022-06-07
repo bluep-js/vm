@@ -1,11 +1,11 @@
 const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
 
-class StringLength extends AbstractNode {
+class MathAbs extends AbstractNode {
 
   static metadata() {
     return {
-      name: 'Length',
-      code: 'string/Length',
+      name: 'MathAbs',
+      code: 'math/MathAbs',
       type: 'modifier',
       deleteable: true,
       addable: true,
@@ -13,7 +13,7 @@ class StringLength extends AbstractNode {
         valA: {
           code: 'valA',
           name: 'A',
-          type: 'basic/string'
+          type: 'basic/float'
         },
       },
       outputs: {
@@ -22,17 +22,17 @@ class StringLength extends AbstractNode {
           name: 'Result',
           type: 'basic/number'
         }
-      },
+      }, 
     }
   }
 
-  async execute(inputs) {
-    this.debug('execute', inputs)
-    if (inputs.valA) {
-      const ret = inputs.valA.length
-      this.setOutput('result', ret)
+   async execute(inputs) {
+      this.debug('execute', inputs)
+      if (inputs.valA) {
+      const ret = Math.abs(inputs.valA)
+      this.setOutput('result', ret )
     }
   }
 }
 
-module.exports = StringLength
+module.exports = MathAbs
