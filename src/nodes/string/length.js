@@ -5,16 +5,20 @@ class StringLength extends AbstractNode {
   static metadata() {
     return {
       name: 'Length',
-      code: 'string/Length',
+      code: 'string/length',
       type: 'modifier',
-      deleteable: true,
-      addable: true,
       inputs: {
-        valA: {
-          code: 'valA',
+        source: {
+          code: 'source',
           name: 'A',
           type: 'basic/string'
         },
+        append: {
+          code: 'append',
+          name: 'B',
+          type: 'basic/string',
+          multiple: 'A'
+        }
       },
       outputs: {
         result: {
@@ -23,15 +27,23 @@ class StringLength extends AbstractNode {
           type: 'basic/number'
         }
       },
+      multiples: {
+        A: {
+          min: 1,
+          value: 1
+          // max: 10
+        }
+      }
     }
   }
 
   async execute(inputs) {
     this.debug('execute', inputs)
-    if (inputs.valA) {
-      const ret = inputs.valA.length
-      this.setOutput('result', ret)
-    }
+    let ret = inputs.source + inputs.append
+    Object.keys(inputs).forEach(inp => {
+      if (inp.startsWith('append_multiple_')) ret += inputs[inp]
+    })
+    this.setOutput('result', ret)
   }
 }
 
