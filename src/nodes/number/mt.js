@@ -1,11 +1,11 @@
-const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
+const AbstractNode = require('../abstract')
 
-class FloatDivide extends AbstractNode {
+class NumberMulti extends AbstractNode {
 
   static metadata() {
     return {
-      name: 'A. / B.',
-      code: 'float/divide',
+      name: 'A * B',
+      code: 'number/mt',
       type: 'modifier',
       deleteable: true,
       addable: true,
@@ -13,12 +13,12 @@ class FloatDivide extends AbstractNode {
         valA: {
           code: 'valA',
           name: 'A',
-          type: 'basic/float',
+          type: 'basic/number'
         },
         valB: {
           code: 'valB',
           name: 'B',
-          type: 'basic/float',
+          type: 'basic/number',
           multiple: 'A'
         }
       },
@@ -26,7 +26,7 @@ class FloatDivide extends AbstractNode {
         result: {
           code: 'result',
           name: 'Result',
-          type: 'basic/float'
+          type: 'basic/number'
         }
       },
       multiples: {
@@ -42,10 +42,10 @@ class FloatDivide extends AbstractNode {
     this.debug('execute', inputs)
     let ret = inputs.valA
     Object.keys(inputs).forEach(inp => {
-      if (inp.startsWith('valB')) ret /= inputs[inp]
+      if (inp.startsWith('valB')) ret *= inputs[inp]
     })
     this.setOutput('result', ret)
   }
 }
 
-module.exports = FloatDivide
+module.exports = NumberMulti
