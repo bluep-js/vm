@@ -1,11 +1,11 @@
-const AbstractNode = require('../abstract')
+const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
 
-class NumberPlus extends AbstractNode {
+class FloatMinus extends AbstractNode {
 
   static metadata() {
     return {
-      name: 'A + B',
-      code: 'number/plus',
+      name: 'A. - B.',
+      code: 'float/minusFloat',
       type: 'modifier',
       deleteable: true,
       addable: true,
@@ -13,12 +13,13 @@ class NumberPlus extends AbstractNode {
         valA: {
           code: 'valA',
           name: 'A',
-          type: 'basic/number'
+          type: 'basic/float',
+          template: 'NumberFloat'
         },
         valB: {
           code: 'valB',
           name: 'B',
-          type: 'basic/number',
+          type: 'basic/float',
           multiple: 'A'
         }
       },
@@ -26,7 +27,7 @@ class NumberPlus extends AbstractNode {
         result: {
           code: 'result',
           name: 'Result',
-          type: 'basic/number'
+          type: 'basic/float'
         }
       },
       multiples: {
@@ -35,7 +36,6 @@ class NumberPlus extends AbstractNode {
           min: 1
         }
       },
-
     }
   }
 
@@ -43,10 +43,10 @@ class NumberPlus extends AbstractNode {
     this.debug('execute', inputs)
     let ret = inputs.valA
     Object.keys(inputs).forEach(inp => {
-      if (inp.startsWith('valB')) ret += inputs[inp]
+      if (inp.startsWith('valB')) ret -= inputs[inp]
     })
     this.setOutput('result', ret)
   }
 }
 
-module.exports = NumberPlus
+module.exports = FloatMinus

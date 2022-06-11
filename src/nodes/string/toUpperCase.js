@@ -1,38 +1,39 @@
 const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
 
-class StringLength extends AbstractNode {
+class StringToUpperCase extends AbstractNode {
 
   static metadata() {
     return {
-      name: 'Length',
-      code: 'string/Length',
+      name: 'toUpperCase',
+      code: 'string/toUpperCase',
       type: 'modifier',
       deleteable: true,
       addable: true,
       inputs: {
-        valA: {
-          code: 'valA',
-          name: 'A',
+        income: {
+          code: 'income',
+          name: 'Income',
           type: 'basic/string'
-        },
+        }
       },
       outputs: {
         result: {
           code: 'result',
           name: 'Result',
-          type: 'basic/number'
+          type: 'basic/string'
         }
-      },
+      }
     }
   }
 
   async execute(inputs) {
     this.debug('execute', inputs)
-    if (inputs.valA) {
-      const ret = inputs.valA.length
+    if (inputs.income) {
+      const ret = inputs.income.toUpperCase()
+      /*       const ret = Math.acos(inputs.income) */
       this.setOutput('result', ret)
     }
   }
 }
 
-module.exports = StringLength
+module.exports = StringToUpperCase

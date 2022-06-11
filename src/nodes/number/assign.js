@@ -27,9 +27,10 @@ class NumberAssign extends AbstractNode {
           name: 'Result',
           type: 'basic/number'
         }
-      }
+      },
     }
   }
+
 
   async execute(inputs) {
     this.debug('execute', inputs)
