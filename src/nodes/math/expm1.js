@@ -1,23 +1,18 @@
 const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
 
-class StringRepeat extends AbstractNode {
+class MathExpm1 extends AbstractNode {
 
   static metadata() {
     return {
-      name: 'Repeat',
-      code: 'string/repeat',
+      name: 'Expm1',
+      code: 'math/expm1',
       type: 'modifier',
       deleteable: true,
       addable: true,
       inputs: {
         valA: {
           code: 'valA',
-          name: 'A',
-          type: 'basic/string'
-        },
-        valB: {
-          code: 'valB',
-          name: 'B',
+          name: 'ValA',
           type: 'basic/number'
         }
       },
@@ -25,19 +20,23 @@ class StringRepeat extends AbstractNode {
         result: {
           code: 'result',
           name: 'Result',
-          type: 'basic/string'
+          type: 'basic/template',
+          template: 'NumberFloat'
         }
       },
+      templates: {
+        NumberFloat: {
+          allow: ['basic/number', 'basic/float']
+        }
+      }
     }
   }
 
   async execute(inputs) {
     this.debug('execute', inputs)
-    if (inputs.valA) {
-      const ret = inputs.valA.repeat(inputs.valB)
-      this.setOutput('result', ret)
-    }
+    const ret = Math.expm1(inputs.valA)
+    this.setOutput('result', ret)
   }
 }
 
-module.exports = StringRepeat
+module.exports = MathExpm1

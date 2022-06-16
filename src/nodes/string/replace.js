@@ -1,11 +1,11 @@
 const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
 
-class StringIncludes extends AbstractNode {
+class StringReplace extends AbstractNode {
 
   static metadata() {
     return {
-      name: 'Includes',
-      code: 'string/includes',
+      name: 'Replace',
+      code: 'string/replace',
       type: 'modifier',
       deleteable: true,
       addable: true,
@@ -19,29 +19,30 @@ class StringIncludes extends AbstractNode {
           code: 'search',
           name: 'Search',
           type: 'basic/string'
-        }
+        },
+        replace: {
+          code: 'replace',
+          name: 'Replace',
+          type: 'basic/string'
+        },
       },
       outputs: {
         result: {
           code: 'result',
           name: 'Result',
-          type: 'basic/boolean'
+          type: 'basic/string'
         }
       },
     }
   }
 
-
   async execute(inputs) {
     this.debug('execute', inputs)
-    const a = inputs.income
-    const b = inputs.search
-    let res = false
-    if (a && a.includes(b))
-      res = true
-    this.setOutput('result', res)
+    if (inputs.income && inputs.search && inputs.replace) {
+      let res = inputs.income.replace(inputs.search, inputs.replace)
+      this.setOutput('result', res)
+    }
   }
 }
 
-
-module.exports = StringIncludes
+module.exports = StringReplace

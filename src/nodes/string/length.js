@@ -5,7 +5,7 @@ class StringLength extends AbstractNode {
   static metadata() {
     return {
       name: 'Length',
-      code: 'string/Length',
+      code: 'string/length',
       type: 'modifier',
       deleteable: true,
       addable: true,

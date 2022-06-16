@@ -4,8 +4,8 @@ class FloatToFixed extends AbstractNode {
 
   static metadata() {
     return {
-      name: 'FloatToFixed',
-      code: 'float/ToFixed',
+      name: 'toFixed',
+      code: 'float/toFixed',
       type: 'modifier',
       deleteable: true,
       addable: true,

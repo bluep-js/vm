@@ -1,31 +1,36 @@
 const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
 
-class StringLastIndexOf extends AbstractNode {
+class StringSlice extends AbstractNode {
 
   static metadata() {
     return {
-      name: 'LastIndexOf',
-      code: 'string/lastIndexOf',
+      name: 'Slice',
+      code: 'string/slice',
       type: 'modifier',
       deleteable: true,
       addable: true,
       inputs: {
+        income: {
+          code: 'income',
+          name: 'Income',
+          type: 'basic/string'
+        },
         valA: {
           code: 'valA',
           name: 'A',
-          type: 'basic/string'
+          type: 'basic/number'
         },
         valB: {
           code: 'valB',
           name: 'B',
-          type: 'basic/string'
-        }
+          type: 'basic/number'
+        },
       },
       outputs: {
         result: {
           code: 'result',
           name: 'Result',
-          type: 'basic/number'
+          type: 'basic/string'
         }
       },
     }
@@ -33,11 +38,11 @@ class StringLastIndexOf extends AbstractNode {
 
   async execute(inputs) {
     this.debug('execute', inputs)
-    if (inputs.valA) {
-      const ret = inputs.valA.lastIndexOf(inputs.valB)
+    if (inputs.income) {
+      const ret = inputs.income.slice(inputs.valA, inputs.valB)
       this.setOutput('result', ret)
     }
   }
 }
 
-module.exports = StringLastIndexOf
+module.exports = StringSlice

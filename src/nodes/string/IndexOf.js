@@ -1,11 +1,11 @@
 const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
 
-class IndexOf extends AbstractNode {
+class StringIndexOf extends AbstractNode {
 
   static metadata() {
     return {
       name: 'IndexOf',
-      code: 'string/IndexOf',
+      code: 'string/indexOf',
       type: 'modifier',
       deleteable: true,
       addable: true,
@@ -40,4 +40,4 @@ class IndexOf extends AbstractNode {
   }
 }
 
-module.exports = IndexOf
+module.exports = StringIndexOf

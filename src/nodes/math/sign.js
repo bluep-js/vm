@@ -1,25 +1,21 @@
 const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
 
-class StringLastIndexOf extends AbstractNode {
+class MathSign extends AbstractNode {
 
   static metadata() {
     return {
-      name: 'LastIndexOf',
-      code: 'string/lastIndexOf',
+      name: 'MathSign',
+      code: 'math/mathSign',
       type: 'modifier',
       deleteable: true,
       addable: true,
       inputs: {
         valA: {
           code: 'valA',
-          name: 'A',
-          type: 'basic/string'
+          name: 'ValA',
+          type: 'basic/template',
+          template: 'NumberFloat'
         },
-        valB: {
-          code: 'valB',
-          name: 'B',
-          type: 'basic/string'
-        }
       },
       outputs: {
         result: {
@@ -28,16 +24,19 @@ class StringLastIndexOf extends AbstractNode {
           type: 'basic/number'
         }
       },
+      templates: {
+        NumberFloat: {
+          allow: ['basic/number', 'basic/float']
+        }
+      },
     }
   }
 
   async execute(inputs) {
     this.debug('execute', inputs)
-    if (inputs.valA) {
-      const ret = inputs.valA.lastIndexOf(inputs.valB)
-      this.setOutput('result', ret)
-    }
+    const ret = Math.sign(inputs.valA)
+    this.setOutput('result', ret)
   }
 }
 
-module.exports = StringLastIndexOf
+module.exports = MathSign

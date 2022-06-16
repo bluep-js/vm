@@ -1,27 +1,27 @@
-const AbstractNode = require('../abstract')
+const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
 
-class NumberToString extends AbstractNode {
+class MathRound extends AbstractNode {
 
   static metadata() {
     return {
-      name: 'To String',
-      code: 'number/tostring',
+      name: 'MathRound',
+      code: 'math/mathRound',
       type: 'modifier',
       deleteable: true,
       addable: true,
       inputs: {
-        number: {
-          code: 'number',
-          name: 'Number',
+        base: {
+          code: 'base',
+          name: 'Base',
           type: 'basic/template',
           template: 'NumberFloat'
         }
       },
       outputs: {
-        string: {
-          code: 'string',
-          name: 'String',
-          type: 'basic/string',
+        result: {
+          code: 'result',
+          name: 'Result',
+          type: 'basic/number'
         }
       },
       templates: {
@@ -34,8 +34,9 @@ class NumberToString extends AbstractNode {
 
   async execute(inputs) {
     this.debug('execute', inputs)
-    this.setOutput('string', `${inputs.number}`)
+    const ret = Math.round(inputs.base)
+    this.setOutput('result', ret)
   }
 }
 
-module.exports = NumberToString
+module.exports = MathRound

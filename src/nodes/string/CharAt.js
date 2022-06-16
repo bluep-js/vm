@@ -1,11 +1,11 @@
 const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
 
-class CharAt extends AbstractNode {
+class StringCharAt extends AbstractNode {
 
   static metadata() {
     return {
       name: 'CharAt',
-      code: 'string/CharAt',
+      code: 'string/charAt',
       type: 'modifier',
       deleteable: true,
       addable: true,
@@ -40,4 +40,4 @@ class CharAt extends AbstractNode {
   }
 }
 
-module.exports = CharAt
+module.exports = StringCharAt

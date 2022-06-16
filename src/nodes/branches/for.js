@@ -59,10 +59,10 @@ class For extends AbstractNode {
   async execute(inputs) {
     this.debug('For::execute', inputs)
     if (typeof inputs.from !== 'number'
-        || typeof inputs.to !== 'number'
-        || typeof inputs.step !== 'number')
+      || typeof inputs.to !== 'number'
+      || typeof inputs.step !== 'number')
       return 'done'
-    if (inputs.from < inputs.to ) {
+    if (inputs.from < inputs.to) {
       if (inputs.incTo) {
         for (let i = inputs.from; i <= inputs.to; i += inputs.step) {
           this.setOutput('index', i)

@@ -1,24 +1,19 @@
 const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
 
-class FloatAssign extends AbstractNode {
+class MathFround extends AbstractNode {
 
   static metadata() {
     return {
-      name: 'A =. B',
-      code: 'float/assignFloat',
+      name: 'Fround',
+      code: 'math/fround',
       type: 'modifier',
       deleteable: true,
       addable: true,
       inputs: {
         valA: {
           code: 'valA',
-          name: 'A',
-          type: 'basic/float'
-        },
-        valB: {
-          code: 'valB',
-          name: 'B',
-          type: 'basic/float',
+          name: 'ValA',
+          type: 'basic/template',
           template: 'NumberFloat'
         }
       },
@@ -26,16 +21,23 @@ class FloatAssign extends AbstractNode {
         result: {
           code: 'result',
           name: 'Result',
-          type: 'basic/float'
+          type: 'basic/template',
+          template: 'NumberFloat'
         }
       },
+      templates: {
+        NumberFloat: {
+          allow: ['basic/number', 'basic/float']
+        }
+      }
     }
   }
 
   async execute(inputs) {
     this.debug('execute', inputs)
-    this.setOutput('result', inputs.valA = inputs.valB)
+    const ret = Math.expm1(inputs.valA)
+    this.setOutput('result', ret)
   }
 }
 
-module.exports = FloatAssign
+module.exports = MathFround

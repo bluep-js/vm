@@ -1,25 +1,26 @@
 const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
 
-class MathSqrt extends AbstractNode {
+class FloatParse extends AbstractNode {
 
   static metadata() {
     return {
-      name: 'MathSqrt',
-      code: 'math/MathSqrt',
+      name: 'Parse',
+      code: 'float/floatParse',
       type: 'modifier',
       deleteable: true,
       addable: true,
-      inputs: {},
+      inputs: {
+        valA: {
+          code: 'valA',
+          name: 'A',
+          type: 'basic/string'
+        }
+      },
       outputs: {
         result: {
           code: 'result',
           name: 'Result',
           type: 'basic/float'
-        }
-      },
-      templates: {
-        NumberFloat: {
-          allow: ['basic/number','basic/float']
         }
       }
     }
@@ -27,9 +28,11 @@ class MathSqrt extends AbstractNode {
 
   async execute(inputs) {
     this.debug('execute', inputs)
-    const ret = Math.SQRT2
-    this.setOutput('result', ret )
+    if (inputs.valA) {
+      let ret = parseFloat(inputs.valA)
+      this.setOutput('result', ret)
+    }
   }
 }
 
-module.exports = MathSqrt
+module.exports = FloatParse

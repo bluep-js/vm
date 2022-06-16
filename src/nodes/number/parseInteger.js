@@ -1,11 +1,11 @@
 const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
 
-class StringLastIndexOf extends AbstractNode {
+class NumberParseInteger extends AbstractNode {
 
   static metadata() {
     return {
-      name: 'LastIndexOf',
-      code: 'string/lastIndexOf',
+      name: 'ParseInteger',
+      code: 'number/parseInteger',
       type: 'modifier',
       deleteable: true,
       addable: true,
@@ -13,11 +13,6 @@ class StringLastIndexOf extends AbstractNode {
         valA: {
           code: 'valA',
           name: 'A',
-          type: 'basic/string'
-        },
-        valB: {
-          code: 'valB',
-          name: 'B',
           type: 'basic/string'
         }
       },
@@ -34,10 +29,10 @@ class StringLastIndexOf extends AbstractNode {
   async execute(inputs) {
     this.debug('execute', inputs)
     if (inputs.valA) {
-      const ret = inputs.valA.lastIndexOf(inputs.valB)
+      let ret = parseInt(inputs.valA)
       this.setOutput('result', ret)
     }
   }
 }
 
-module.exports = StringLastIndexOf
+module.exports = NumberParseInteger

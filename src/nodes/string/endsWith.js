@@ -1,11 +1,11 @@
 const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
 
-class StringLastIndexOf extends AbstractNode {
+class StringEndsWith extends AbstractNode {
 
   static metadata() {
     return {
-      name: 'LastIndexOf',
-      code: 'string/lastIndexOf',
+      name: 'EndsWith',
+      code: 'string/endsWith',
       type: 'modifier',
       deleteable: true,
       addable: true,
@@ -25,7 +25,7 @@ class StringLastIndexOf extends AbstractNode {
         result: {
           code: 'result',
           name: 'Result',
-          type: 'basic/number'
+          type: 'basic/boolean'
         }
       },
     }
@@ -33,11 +33,14 @@ class StringLastIndexOf extends AbstractNode {
 
   async execute(inputs) {
     this.debug('execute', inputs)
-    if (inputs.valA) {
-      const ret = inputs.valA.lastIndexOf(inputs.valB)
-      this.setOutput('result', ret)
-    }
+    const a = inputs.valA
+    const b = inputs.valB
+    let res = false
+    if (a && a.endsWith(b))
+      res = true
+    this.setOutput('result', res)
   }
 }
 
-module.exports = StringLastIndexOf
+
+module.exports = StringEndsWith

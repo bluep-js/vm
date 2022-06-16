@@ -43,6 +43,8 @@ const NumberRemainder = require('./number/remainder')
 const NumberExponentiation = require('./number/exponentiation')
 const NumberIncrement = require('./number/increment')
 const NumberDecrement = require('./number/decrement')
+const NumberParseInteger = require('./number/parseInteger')
+const NumberIsInteger = require('./number/isInteger')
 
 const FloatPlus = require('./float/plusFloat')
 const FloatMinus = require('./float/minusFloat')
@@ -52,21 +54,54 @@ const FloatMultiply = require('./float/multiplyFloat')
 const FloatEq = require('./float/eqFloat')
 const FloatGt = require('./float/gtFloat')
 const FloatLt = require('./float/ltFloat')
-const FloatToFixed = require('./float/ToFixed')
+const FloatToFixed = require('./float/toFixed')
+const FloatParse = require('./float/floatParse')
 
-const MathPi = require('./math/MathPi')
-const MathAbs = require('./math/MathAbs')
-const MathSqrt = require('./math/MathSqrt')
- 
+
+const MathPi = require('./math/pi')
+const MathAbs = require('./math/abs')
+const MathAsin = require('./math/asin')
+const MathSqrt = require('./math/sqrt')
+const MathE = require('./math/e') 
+const MathPow = require('./math/pow') 
+const MathLN10 = require('./math/ln10') 
+const MathLN2 = require('./math/ln2') 
+const MathCeil = require('./math/ceil') 
+const MathFloor = require('./math/floor') 
+const MathRound = require('./math/round') 
+const MathRandom = require('./math/random') 
+const MathCbrt = require('./math/cbrt') 
+const MathExp = require('./math/exp') 
+const MathExpm1 = require('./math/expm1') 
+const MathFround = require('./math/fround') 
+const MathLog = require('./math/log') 
+const MathLog2 = require('./math/log2') 
+const MathLog10 = require('./math/log10') 
+const Mathclz32 = require('./math/clz32')
+const MathSin = require('./math/sin')
+const MathCos = require('./math/cos')
+const MathTan = require('./math/tan')
+const MathAcos = require('./math/acos')
+const MathAtan = require('./math/atan')
+const MathSign = require('./math/sign')
+const MathSqrt1_2 = require('./math/sqrt1_2') 
+const MathTrunc = require('./math/trunc')
+
+
+
 const StringEq = require('./string/eq')
 const StringAppend = require('./string/append')
 const StringToUpperCase = require('./string/toUpperCase')
 const StringToLowerCase = require('./string/toLowerCase')
-const CharAt = require('./string/CharAt')
-const StringRepeat = require('./string/Repeat')
-const IndexOf = require('./string/IndexOf')
-const StringLength = require('./string/Length')
-const StringLastIndexOf = require('./string/LastIndexOf')
+const StringCharAt = require('./string/charAt')
+const StringRepeat = require('@bluepjs/vm/src/nodes/string/repeat')
+const StringIndexOf = require('./string/indexOf')
+const StringLength = require('./string/length')
+const StringLastIndexOf = require('./string/lastIndexOf')
+const StringIncludes = require('./string/includes')
+const StringReplace = require('./string/replace')
+const StringSlice = require('./string/slice')
+const StringEndsWith = require('./string/endsWith')
 
 
 const DatetimeCreate = require('./datetime/create')
@@ -103,15 +138,44 @@ const Nodes = {
   StringEq,
   StringToUpperCase,
   StringToLowerCase,
-  CharAt,
+  StringCharAt,
   StringRepeat,
-  IndexOf,
+  StringIndexOf,
   StringLength,
   StringLastIndexOf,
+  StringIncludes,
+  StringReplace,
+  StringSlice,
+  StringEndsWith,
 
   MathPi,
   MathAbs,
   MathSqrt,
+  MathE,
+  MathPow,
+  MathLN10,
+  MathLN2,
+  MathAcos,
+  MathCeil,
+  MathFloor,
+  MathRound,
+  MathRandom,
+  MathCbrt,
+  MathExp,
+  MathExpm1,
+  MathFround,
+  MathLog,
+  MathLog2,
+  MathLog10,
+  MathSin,
+  MathCos,
+  MathAtan,
+  MathAsin,
+  MathTan,
+  Mathclz32,
+  MathSign,
+  MathSqrt1_2,
+  MathTrunc,
 
   EnumToString,
   EnumEqual,
@@ -145,6 +209,8 @@ const Nodes = {
   NumberRemainder,
   NumberIncrement,
   NumberDecrement,
+  NumberIsInteger,
+  NumberParseInteger,
  
   FloatPlus,
   FloatMinus,
@@ -155,6 +221,7 @@ const Nodes = {
   FloatGt,
   FloatLt,
   FloatToFixed,
+  FloatParse,
 
  
  

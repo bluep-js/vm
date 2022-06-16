@@ -18,8 +18,8 @@ class FloatMultiply extends AbstractNode {
         valB: {
           code: 'valB',
           name: 'B',
-          type: 'basic/float',
-          multiple: 'A'
+          type: 'basic/template',
+          template: 'NumberFloat'
         }
       },
       outputs: {
@@ -33,6 +33,11 @@ class FloatMultiply extends AbstractNode {
         A: {
           value: 1,
           min: 1
+        }
+      },
+      templates: {
+        NumberFloat: {
+          allow: ['basic/number', 'basic/float']
         }
       }
     }
