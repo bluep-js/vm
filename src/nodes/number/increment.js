@@ -29,7 +29,7 @@ class NumberIncrement extends AbstractNode {
 
   async execute(inputs) {
     this.debug('execute', inputs)
-    this.setOutput('result', inputs.num + 1)
+    this.setOutput('result', inputs.num+1)
   }
 
 
@@ -37,6 +37,6 @@ class NumberIncrement extends AbstractNode {
 
 
 
-
+ 
 
 module.exports = NumberIncrement

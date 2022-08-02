@@ -22,7 +22,10 @@ class NumberDecrement extends AbstractNode {
           name: 'Result',
           type: 'basic/number'
         }
-      },
+      },  
+
+     
+
     }
   }
 
@@ -36,6 +39,6 @@ class NumberDecrement extends AbstractNode {
 
 
 
-
+ 
 
 module.exports = NumberDecrement

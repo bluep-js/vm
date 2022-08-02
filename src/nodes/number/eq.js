@@ -27,7 +27,7 @@ class NumberEq extends AbstractNode {
           name: 'Result',
           type: 'basic/boolean'
         }
-      },
+      }
     }
   }
 

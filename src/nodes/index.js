@@ -92,7 +92,7 @@ const StringAppend = require('./string/append')
 const StringToUpperCase = require('./string/toUpperCase')
 const StringToLowerCase = require('./string/toLowerCase')
 const StringCharAt = require('./string/charAt')
-const StringRepeat = require('@bluepjs/vm/src/nodes/string/repeat')
+const StringRepeat = require('/string/repeat')
 const StringIndexOf = require('./string/indexOf')
 const StringLength = require('./string/length')
 const StringLastIndexOf = require('./string/lastIndexOf')
@@ -100,7 +100,6 @@ const StringIncludes = require('./string/includes')
 const StringReplace = require('./string/replace')
 const StringSlice = require('./string/slice')
 const StringEndsWith = require('./string/endsWith')
-
 
 const DatetimeCreate = require('./datetime/create')
 const DatetimeUnwrap = require('./datetime/unwrap')
@@ -226,7 +225,6 @@ const Nodes = {
   FloatToFixed,
   FloatParse,
  
-
   IsUndefined,
 
   DatetimeCreate,
@@ -242,5 +240,3 @@ const Nodes = {
 }
 
 module.exports = Nodes
-
-

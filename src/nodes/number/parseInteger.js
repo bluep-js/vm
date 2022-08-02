@@ -22,7 +22,7 @@ class NumberParseInteger extends AbstractNode {
           name: 'Result',
           type: 'basic/number'
         }
-      },
+      }
     }
   }
 

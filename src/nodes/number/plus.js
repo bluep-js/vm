@@ -34,8 +34,7 @@ class NumberPlus extends AbstractNode {
           value: 1,
           min: 1
         }
-      },
-
+      }
     }
   }
 
