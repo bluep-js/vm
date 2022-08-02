@@ -13,25 +13,19 @@ class MathPow extends AbstractNode {
         base: {
           code: 'base',
           name: 'Base',
-          type: 'basic/number'
+          type: 'basic/float'
         },
         exponent: {
           code: 'exponent',
           name: 'Exponent',
-          type: 'basic/number'
+          type: 'basic/float'
         }
       },
       outputs: {
         result: {
           code: 'result',
           name: 'Result',
-          type: 'basic/template',
-          template: 'NumberFloat'
-        }
-      },
-      templates: {
-        NumberFloat: {
-          allow: ['basic/number', 'basic/float']
+          type: 'basic/float'        
         }
       }
     }

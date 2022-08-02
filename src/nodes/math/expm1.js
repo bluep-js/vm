@@ -13,20 +13,14 @@ class MathExpm1 extends AbstractNode {
         valA: {
           code: 'valA',
           name: 'ValA',
-          type: 'basic/number'
+          type: 'basic/float'
         }
       },
       outputs: {
         result: {
           code: 'result',
           name: 'Result',
-          type: 'basic/template',
-          template: 'NumberFloat'
-        }
-      },
-      templates: {
-        NumberFloat: {
-          allow: ['basic/number', 'basic/float']
+          type: 'basic/float'
         }
       }
     }

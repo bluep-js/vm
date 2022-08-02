@@ -13,8 +13,7 @@ class MathRound extends AbstractNode {
         base: {
           code: 'base',
           name: 'Base',
-          type: 'basic/template',
-          template: 'NumberFloat'
+          type: 'basic/float' 
         }
       },
       outputs: {
@@ -23,12 +22,7 @@ class MathRound extends AbstractNode {
           name: 'Result',
           type: 'basic/number'
         }
-      },
-      templates: {
-        NumberFloat: {
-          allow: ['basic/number', 'basic/float']
-        }
-      }
+      } 
     }
   }
 

@@ -30,7 +30,6 @@ class StringToUpperCase extends AbstractNode {
     this.debug('execute', inputs)
     if (inputs.income) {
       const ret = inputs.income.toUpperCase()
-      /*       const ret = Math.acos(inputs.income) */
       this.setOutput('result', ret)
     }
   }

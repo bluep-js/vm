@@ -29,7 +29,7 @@ class NumberParseInteger extends AbstractNode {
   async execute(inputs) {
     this.debug('execute', inputs)
     if (inputs.valA) {
-      let ret = parseInt(inputs.valA)
+      let ret = parseInt(inputs.valA, 10)
       this.setOutput('result', ret)
     }
   }

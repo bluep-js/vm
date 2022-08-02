@@ -14,8 +14,7 @@ class MathSqrt extends AbstractNode {
         valA: {
           code: 'valA',
           name: 'ValA',
-          type: 'basic/template',
-          template: 'NumberFloat'
+          type: 'basic/float'
         }
       },
       outputs: {
@@ -23,11 +22,6 @@ class MathSqrt extends AbstractNode {
           code: 'sqrt',
           name: 'Sqrt',
           type: 'basic/float'
-        }
-      },
-      templates: {
-        NumberFloat: {
-          allow: ['basic/number', 'basic/float']
         }
       }
     }

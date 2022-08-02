@@ -1,19 +1,19 @@
 const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
 
-class MathLog2E extends AbstractNode {
+class MathSqrt2 extends AbstractNode {
 
   static metadata() {
     return {
-      name: 'Math2e',
-      code: 'math/log2E',
+      name: 'MathSqrt2',
+      code: 'math/mathSqrt2',
       type: 'getter',
       deleteable: true,
       addable: true,
       inputs: {},
       outputs: {
-        math2e: {
-          code: 'math2e',
-          name: 'Log2e',
+        sqrt2: {
+          code: 'sqrt2',
+          name: 'Sqrt2',
           type: 'basic/float'
         }
       }
@@ -22,9 +22,10 @@ class MathLog2E extends AbstractNode {
 
   async execute() {
     this.debug('execute')
-    const ret = Math.LOG2E
-    this.setOutput('math2e', ret)
+    const ret = Math.SQRT2
+    this.setOutput('sqrt2', ret)
   }
 }
 
-module.exports = MathLog2E
+
+module.exports = MathSqrt2

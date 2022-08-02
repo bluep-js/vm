@@ -10,9 +10,9 @@ class NumberIncrement extends AbstractNode {
       deleteable: true,
       addable: true,
       inputs: {
-        result: {
-          code: 'result',
-          name: 'Result',
+        num: {
+          code: 'num',
+          name: 'Number',
           type: 'basic/number'
         }
       },
@@ -22,14 +22,14 @@ class NumberIncrement extends AbstractNode {
           name: 'Result',
           type: 'basic/number'
         }
-      },
+      }
     }
   }
 
 
   async execute(inputs) {
     this.debug('execute', inputs)
-    this.setOutput('result', inputs.result + 1)
+    this.setOutput('result', inputs.num + 1)
   }
 
 

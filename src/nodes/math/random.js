@@ -14,13 +14,7 @@ class MathRandom extends AbstractNode {
         random: {
           code: 'random',
           name: 'Random',
-          type: 'basic/template',
-          template: 'NumberFloat'
-        }
-      },
-      templates: {
-        NumberFloat: {
-          allow: ['basic/number', 'basic/float']
+          type: 'basic/float' 
         }
       }
     }

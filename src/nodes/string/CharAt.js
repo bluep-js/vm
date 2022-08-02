@@ -25,7 +25,7 @@ class StringCharAt extends AbstractNode {
         result: {
           code: 'result',
           name: 'Result',
-          type: 'basic/number'
+          type: 'basic/string'
         }
       },
     }

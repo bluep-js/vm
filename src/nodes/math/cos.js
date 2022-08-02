@@ -13,23 +13,16 @@ class MathCos extends AbstractNode {
         valA: {
           code: 'valA',
           name: 'ValA',
-          type: 'basic/template',
-          template: 'NumberFloat'
+          type: 'basic/float'
         },
       },
       outputs: {
         result: {
           code: 'result',
           name: 'Result',
-          type: 'basic/template',
-          template: 'NumberFloat'
+          type: 'basic/float'
         }
-      }, 
-      templates: {
-        NumberFloat: {
-          allow: ['basic/number','basic/float']
-        }
-      },
+      }
     }
   }
 

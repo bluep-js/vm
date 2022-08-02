@@ -18,8 +18,7 @@ class FloatDivide extends AbstractNode {
         valB: {
           code: 'valB',
           name: 'B',
-          type: 'basic/float',
-          multiple: 'A'
+          type: 'basic/float'
         }
       },
       outputs: {
@@ -28,22 +27,16 @@ class FloatDivide extends AbstractNode {
           name: 'Result',
           type: 'basic/float'
         }
-      },
-      multiples: {
-        A: {
-          value: 1,
-          min: 1
-        }
       }
     }
   }
 
   async execute(inputs) {
     this.debug('execute', inputs)
-    let ret = inputs.valA
-    Object.keys(inputs).forEach(inp => {
-      if (inp.startsWith('valB')) ret /= inputs[inp]
-    })
+    if (!!inputs.valB) {
+      this.error('DIVIDE BY ZERO IS PROHIBITED, STUPID!')
+    }
+    let ret = inputs.valA / inputs.valB
     this.setOutput('result', ret)
   }
 }

@@ -26,13 +26,7 @@ class NumberDivide extends AbstractNode {
         result: {
           code: 'result',
           name: 'Result',
-          type: 'basic/number'
-        }
-      },
-      multiples: {
-        A: {
-          value: 1,
-          min: 1
+          type: 'basic/float'
         }
       }
     }
@@ -41,11 +35,14 @@ class NumberDivide extends AbstractNode {
   async execute(inputs) {
     this.debug('execute', inputs)
     let ret = inputs.valA
-    Object.keys(inputs).forEach(inp => {
-      if (inp.startsWith('valB')) ret /= inputs[inp]
-    })
+    if (!!inputs.valB) {
+      this.error('DIVIDE BY ZERO IS PROHIBITED, STUPID!')
+      return
+    }
+    ret /= inputs.valB
     this.setOutput('result', ret)
   }
 }
+
 
 module.exports = NumberDivide

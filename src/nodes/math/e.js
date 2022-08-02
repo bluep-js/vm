@@ -14,15 +14,9 @@ class MathE extends AbstractNode {
         e: {
           code: 'e',
           name: 'E',
-          type: 'basic/template',
-          template: 'NumberFloat'
+          type: 'basic/float'
         }
-      },
-      templates: {
-        NumberFloat: {
-          allow: ['basic/number', 'basic/float']
-        }
-      },
+      }
     }
   }
 

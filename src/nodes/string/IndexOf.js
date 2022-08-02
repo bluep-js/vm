@@ -25,7 +25,7 @@ class StringIndexOf extends AbstractNode {
         result: {
           code: 'result',
           name: 'Result',
-          type: 'basic/string'
+          type: 'basic/number'
         }
       },
     }

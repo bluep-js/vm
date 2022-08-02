@@ -10,15 +10,15 @@ class FloatToFixed extends AbstractNode {
       deleteable: true,
       addable: true,
       inputs: {
-        valA: {
-          code: 'valA',
-          name: 'A',
+        number: {
+          code: 'number',
+          name: 'Number',
           type: 'basic/float'
         },
-        valB: {
-          code: 'valB',
-          name: 'B',
-          type: 'basic/float'
+        cut: {
+          code: 'cut',
+          name: 'Cut',
+          type: 'basic/number'
         }
       },
       outputs: {
@@ -33,8 +33,8 @@ class FloatToFixed extends AbstractNode {
 
   async execute(inputs) {
     this.debug('execute', inputs)
-    if (inputs.valA) {
-      const ret = inputs.valA.toFixed(inputs.valB)
+    if (inputs.number) {
+      const ret = inputs.number.toFixed(inputs.cut)
       this.setOutput('result', ret)
     }
   }

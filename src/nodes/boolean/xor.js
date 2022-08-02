@@ -18,8 +18,7 @@ class BooleanOr extends AbstractNode {
         valB: {
           code: 'valB',
           name: 'B',
-          type: 'basic/boolean',
-          multiple: 'A'
+          type: 'basic/boolean'
         }
       },
       outputs: {
@@ -28,19 +27,13 @@ class BooleanOr extends AbstractNode {
           name: 'Result',
           type: 'basic/boolean'
         }
-      },
-      multiples: {
-        A: { value: 1 }
       }
     }
   }
 
   async execute(inputs) {
     this.debug('execute', inputs)
-    let ret = !!Object.keys(inputs).length
-    Object.keys(inputs || {}).forEach(inp => {
-      ret = ret || !!inputs[inp]
-    })
+    let ret = (!!inputs.valA && !inputs.valB) || (!inputs.valA && !!inputs.valB)
     this.setOutput('result', ret)
   }
 }

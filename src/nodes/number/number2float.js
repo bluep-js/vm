@@ -1,11 +1,11 @@
-const AbstractNode = require('../abstract')
+const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
 
-class NumberToString extends AbstractNode {
+class NumberToFloat extends AbstractNode {
 
   static metadata() {
     return {
       name: 'To String',
-      code: 'number/tostring',
+      code: 'number/tofloat',
       type: 'modifier',
       deleteable: true,
       addable: true,
@@ -17,10 +17,10 @@ class NumberToString extends AbstractNode {
         }
       },
       outputs: {
-        string: {
-          code: 'string',
-          name: 'String',
-          type: 'basic/string'
+        f: {
+          code: 'f',
+          name: 'Float',
+          type: 'basic/float'
         }
       }
     }
@@ -28,9 +28,9 @@ class NumberToString extends AbstractNode {
 
   async execute(inputs) {
     this.debug('execute', inputs)
-    this.setOutput('string', `${inputs.number}`)
+    this.setOutput('f', inputs.number)
   }
 }
 
 
-module.exports = NumberToString
+module.exports = NumberToFloat

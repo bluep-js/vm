@@ -13,8 +13,7 @@ class FloatPlus extends AbstractNode {
         valA: {
           code: 'valA',
           name: 'A',
-          type: 'basic/float',
-          template: 'NumberFloat'
+          type: 'basic/float'
         },
         valB: {
           code: 'valB',

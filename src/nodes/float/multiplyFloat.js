@@ -29,12 +29,6 @@ class FloatMultiply extends AbstractNode {
           type: 'basic/float'
         }
       },
-      multiples: {
-        A: {
-          value: 1,
-          min: 1
-        }
-      },
       templates: {
         NumberFloat: {
           allow: ['basic/number', 'basic/float']
@@ -45,10 +39,7 @@ class FloatMultiply extends AbstractNode {
 
   async execute(inputs) {
     this.debug('execute', inputs)
-    let ret = inputs.valA
-    Object.keys(inputs).forEach(inp => {
-      if (inp.startsWith('valB')) ret *= inputs[inp]
-    })
+    let ret = inputs.valA * inputs.valB
     this.setOutput('result', ret)
   }
 }

@@ -38,7 +38,7 @@ class StringReplace extends AbstractNode {
 
   async execute(inputs) {
     this.debug('execute', inputs)
-    if (inputs.income && inputs.search && inputs.replace) {
+    if (inputs.income) {
       let res = inputs.income.replace(inputs.search, inputs.replace)
       this.setOutput('result', res)
     }

@@ -13,8 +13,7 @@ class MathSign extends AbstractNode {
         valA: {
           code: 'valA',
           name: 'ValA',
-          type: 'basic/template',
-          template: 'NumberFloat'
+          type: 'basic/float'
         },
       },
       outputs: {
@@ -23,12 +22,7 @@ class MathSign extends AbstractNode {
           name: 'Result',
           type: 'basic/number'
         }
-      },
-      templates: {
-        NumberFloat: {
-          allow: ['basic/number', 'basic/float']
-        }
-      },
+      }
     }
   }
 

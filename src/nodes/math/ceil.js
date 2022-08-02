@@ -13,8 +13,7 @@ class MathCeil extends AbstractNode {
         base: {
           code: 'base',
           name: 'Base',
-          type: 'basic/template',
-          template: 'NumberFloat'
+          type: 'basic/float' 
         }
       },
       outputs: {
@@ -22,11 +21,6 @@ class MathCeil extends AbstractNode {
           code: 'result',
           name: 'Result',
           type: 'basic/number'
-        }
-      },
-      templates: {
-        NumberFloat: {
-          allow: ['basic/number','basic/float']
         }
       } 
     }
