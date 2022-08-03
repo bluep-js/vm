@@ -1,26 +1,31 @@
 const AbstractNode = require('../abstract')
 
-class MathSign extends AbstractNode {
+class FloatEq extends AbstractNode {
 
   static metadata() {
     return {
-      name: 'Sign',
-      code: 'math/mathSign',
+      name: 'A === B',
+      code: 'float/eq',
       type: 'modifier',
       deleteable: true,
       addable: true,
       inputs: {
         valA: {
           code: 'valA',
-          name: 'Source',
+          name: 'A',
           type: 'basic/float'
         },
+        valB: {
+          code: 'valB',
+          name: 'B',
+          type: 'basic/float'
+        }
       },
       outputs: {
         result: {
           code: 'result',
-          name: 'sign(Source)',
-          type: 'basic/number'
+          name: 'A === B',
+          type: 'basic/boolean'
         }
       }
     }
@@ -28,9 +33,8 @@ class MathSign extends AbstractNode {
 
   async execute(inputs) {
     this.debug('execute', inputs)
-    const ret = Math.sign(inputs.valA)
-    this.setOutput('result', ret)
+    this.setOutput('result', inputs.valA === inputs.valB)
   }
 }
 
-module.exports = MathSign
+module.exports = FloatEq

@@ -1,10 +1,10 @@
-const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
+const AbstractNode = require('../abstract')
 
 class NumberIsInteger extends AbstractNode {
 
   static metadata() {
     return {
-      name: 'IsInteger',
+      name: 'Is Integer',
       code: 'number/isInteger',
       type: 'modifier',
       deleteable: true,
@@ -18,15 +18,20 @@ class NumberIsInteger extends AbstractNode {
         }
       },
       outputs: {
+        isInt: {
+          code: 'isInt',
+          name: 'Is Integer',
+          type: 'basic/boolean'
+        },
         result: {
           code: 'result',
-          name: 'Result',
-          type: 'basic/boolean'
+          name: 'Number',
+          type: 'basic/number'
         }
       },
       templates: {
         A: {
-          allow: ['basic/number', 'basic/float']
+          allow: ['*']
         },
       }
     }
@@ -34,7 +39,9 @@ class NumberIsInteger extends AbstractNode {
 
   async execute(inputs) {
     this.debug('execute', inputs)
-    this.setOutput('result', Number.isInteger(inputs.income))
+    const isInt = Number.isInteger(inputs.income)
+    this.setOutput('isInt', isInt )
+    if (isInt) this.setOutput('result', inputs.income)
   }
 }
 

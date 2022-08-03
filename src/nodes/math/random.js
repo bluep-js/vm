@@ -1,4 +1,4 @@
-const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
+const AbstractNode = require('../abstract')
 
 class MathRandom extends AbstractNode {
 

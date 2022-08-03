@@ -1,4 +1,4 @@
-const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
+const AbstractNode = require('../abstract')
 
 class StringLength extends AbstractNode {
 
@@ -10,14 +10,8 @@ class StringLength extends AbstractNode {
       inputs: {
         source: {
           code: 'source',
-          name: 'A',
+          name: 'Source',
           type: 'basic/string'
-        },
-        append: {
-          code: 'append',
-          name: 'B',
-          type: 'basic/string',
-          multiple: 'A'
         }
       },
       outputs: {
@@ -26,23 +20,15 @@ class StringLength extends AbstractNode {
           name: 'Result',
           type: 'basic/number'
         }
-      },
-      multiples: {
-        A: {
-          min: 1,
-          value: 1
-          // max: 10
-        }
       }
     }
   }
 
   async execute(inputs) {
     this.debug('execute', inputs)
-    let ret = inputs.source + inputs.append
-    Object.keys(inputs).forEach(inp => {
-      if (inp.startsWith('append_multiple_')) ret += inputs[inp]
-    })
+    const ret = typeof inputs.source === 'string'
+      ? string.length
+      : undefined
     this.setOutput('result', ret)
   }
 }

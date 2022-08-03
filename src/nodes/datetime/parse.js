@@ -1,23 +1,17 @@
 const dayjs = require('dayjs')
 const advancedFormat = require('dayjs/plugin/advancedFormat')
-dayjs.extend(advancedFormat)
-
 const BuddhistEra = require("dayjs/plugin/buddhistEra")
-dayjs.extend(BuddhistEra)
-
 const dayOfYear = require('dayjs/plugin/dayOfYear')
-dayjs.extend(dayOfYear)
-
 const QuarterOfYear = require('dayjs/plugin/quarterOfYear')
-dayjs.extend(QuarterOfYear)
+const weekOfYear = require('dayjs/plugin/weekOfYear')
 
-var weekOfYear = require('dayjs/plugin/weekOfYear')
+dayjs.extend(advancedFormat)
+dayjs.extend(BuddhistEra)
+dayjs.extend(dayOfYear)
+dayjs.extend(QuarterOfYear)
 dayjs.extend(weekOfYear)
 
-
-
-
-const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
+const AbstractNode = require('../abstract')
 
 class DatetimeParse extends AbstractNode {
 
@@ -29,9 +23,9 @@ class DatetimeParse extends AbstractNode {
       deleteable: true,
       addable: true,
       inputs: {
-        datetime: {
-          code: 'result',
-          name: 'Result',
+        source: {
+          code: 'source',
+          name: 'Source',
           type: 'basic/string'
         },
         format: {
@@ -46,15 +40,14 @@ class DatetimeParse extends AbstractNode {
           code: 'datetime',
           name: 'Datetime',
           type: 'basic/datetime'
-        },
-
+        }
       }
     }
   }
 
   async execute(inputs) {
     this.debug('execute', inputs)
-    const d = dayjs(inputs.datetime, inputs.format)
+    const d = dayjs(inputs.source, inputs.format)
     this.setOutput('result', d)
   }
 }

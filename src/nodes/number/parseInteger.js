@@ -1,10 +1,10 @@
-const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
+const AbstractNode = require('../abstract')
 
 class NumberParseInteger extends AbstractNode {
 
   static metadata() {
     return {
-      name: 'ParseInteger',
+      name: 'Parse Integer',
       code: 'number/parseInteger',
       type: 'modifier',
       deleteable: true,
@@ -12,7 +12,7 @@ class NumberParseInteger extends AbstractNode {
       inputs: {
         valA: {
           code: 'valA',
-          name: 'A',
+          name: 'Source',
           type: 'basic/string'
         }
       },

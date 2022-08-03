@@ -1,4 +1,4 @@
-const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
+const AbstractNode = require('../abstract')
 
 class MathPi extends AbstractNode {
 
@@ -13,7 +13,7 @@ class MathPi extends AbstractNode {
       outputs: {
         pi: {
           code: 'pi',
-          name: 'Pi',
+          name: 'Math.PI',
           type: 'basic/float'
         }
       }

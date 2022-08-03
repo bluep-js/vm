@@ -1,11 +1,11 @@
-const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
+const AbstractNode = require('../abstract')
 
-class FloatPlus extends AbstractNode {
+class FloatMultiply extends AbstractNode {
 
   static metadata() {
     return {
-      name: 'A. + B.',
-      code: 'float/plusFloat',
+      name: 'A * B',
+      code: 'float/multiply',
       type: 'modifier',
       deleteable: true,
       addable: true,
@@ -25,7 +25,7 @@ class FloatPlus extends AbstractNode {
       outputs: {
         result: {
           code: 'result',
-          name: 'Result',
+          name: 'A * B',
           type: 'basic/float'
         }
       },
@@ -34,7 +34,7 @@ class FloatPlus extends AbstractNode {
           value: 1,
           min: 1
         }
-      },
+      }
     }
   }
 
@@ -42,10 +42,10 @@ class FloatPlus extends AbstractNode {
     this.debug('execute', inputs)
     let ret = inputs.valA
     Object.keys(inputs).forEach(inp => {
-      if (inp.startsWith('valB')) ret += inputs[inp]
+      if (inp.startsWith('valB')) ret *= inputs[inp]
     })
     this.setOutput('result', ret)
   }
 }
 
-module.exports = FloatPlus
+module.exports = FloatMultiply

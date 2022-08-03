@@ -1,31 +1,31 @@
-const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
+const AbstractNode = require('../abstract')
 
-class StringCharAt extends AbstractNode {
+class StringLastIndexOf extends AbstractNode {
 
   static metadata() {
     return {
-      name: 'CharAt',
-      code: 'string/charAt',
+      name: 'LastIndexOf',
+      code: 'string/lastIndexOf',
       type: 'modifier',
       deleteable: true,
       addable: true,
       inputs: {
         valA: {
           code: 'valA',
-          name: 'A',
+          name: 'Source',
           type: 'basic/string'
         },
         valB: {
           code: 'valB',
-          name: 'B',
-          type: 'basic/number'
+          name: 'Search',
+          type: 'basic/string'
         }
       },
       outputs: {
         result: {
           code: 'result',
-          name: 'Result',
-          type: 'basic/string'
+          name: 'Last Index Of',
+          type: 'basic/number'
         }
       },
     }
@@ -34,10 +34,10 @@ class StringCharAt extends AbstractNode {
   async execute(inputs) {
     this.debug('execute', inputs)
     if (inputs.valA) {
-      const ret = inputs.valA.charAt(inputs.valB)
+      const ret = inputs.valA.lastIndexOf(inputs.valB)
       this.setOutput('result', ret)
     }
   }
 }
 
-module.exports = StringCharAt
+module.exports = StringLastIndexOf

@@ -2,7 +2,6 @@ const dayjs = require('dayjs')
 const utc = require('dayjs/plugin/utc')
 dayjs.extend(utc)
 
-
 const AbstractNode = require('../abstract')
 
 class DatetimeUtc extends AbstractNode {
@@ -24,7 +23,7 @@ class DatetimeUtc extends AbstractNode {
       outputs: {
         result: {
           code: 'result',
-          name: 'Result',
+          name: 'UTC',
           type: 'basic/datetime'
         }
       }

@@ -1,17 +1,12 @@
 const dayjs = require('dayjs')
-const toObject = require('dayjs/plugin/toObject')
-dayjs.extend(toObject)
-
 const isYesterday = require('dayjs/plugin/isYesterday')
-dayjs.extend(isYesterday)
-
 const isTomorrow = require('dayjs/plugin/isTomorrow')
-dayjs.extend(isTomorrow)
-
 const isToday = require('dayjs/plugin/isToday')
-dayjs.extend(isToday)
-
 const isLeapYear = require("dayjs/plugin/isLeapYear")
+
+dayjs.extend(isYesterday)
+dayjs.extend(isTomorrow)
+dayjs.extend(isToday)
 dayjs.extend(isLeapYear)
 
 const AbstractNode = require('../abstract')
@@ -20,7 +15,7 @@ class DatetimeUnwrapBoolean extends AbstractNode {
 
   static metadata() {
     return {
-      name: 'UnwrapBoolean',
+      name: 'Unwrap Boolean',
       code: 'datetime/unwrapBoolean',
       type: 'modifier',
       deleteable: true,
@@ -35,17 +30,17 @@ class DatetimeUnwrapBoolean extends AbstractNode {
       outputs: {
         isTomorrow: {
           code: 'isTomorrow',
-          name: 'IsTomorrow',
+          name: 'Is Tomorrow',
           type: 'basic/boolean'
         },
         isToday: {
           code: 'isToday',
-          name: 'IsToday',
+          name: 'Is Today',
           type: 'basic/boolean'
         },
         isYesterday: {
           code: 'isYesterday',
-          name: 'IsYesterday',
+          name: 'Is Yesterday',
           type: 'basic/boolean'
         },
         isLeapYear: {

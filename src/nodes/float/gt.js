@@ -1,11 +1,11 @@
 const AbstractNode = require('../abstract')
 
-class NumberIsGreater extends AbstractNode {
+class FloatIsGreater extends AbstractNode {
 
   static metadata() {
     return {
       name: 'A > B',
-      code: 'number/gt',
+      code: 'float/gt',
       type: 'modifier',
       deleteable: true,
       addable: true,
@@ -13,12 +13,12 @@ class NumberIsGreater extends AbstractNode {
         numberA: {
           code: 'numberA',
           name: 'A',
-          type: 'basic/number'
+          type: 'basic/float'
         },
         numberB: {
           code: 'numberB',
           name: 'B',
-          type: 'basic/number'
+          type: 'basic/float'
         },
         equal: {
           code: 'equal',
@@ -50,4 +50,4 @@ class NumberIsGreater extends AbstractNode {
   }
 }
 
-module.exports = NumberIsGreater
+module.exports = FloatIsGreater

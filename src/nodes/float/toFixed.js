@@ -1,10 +1,10 @@
-const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
+const AbstractNode = require('../abstract')
 
 class FloatToFixed extends AbstractNode {
 
   static metadata() {
     return {
-      name: 'toFixed',
+      name: 'To Fixed',
       code: 'float/toFixed',
       type: 'modifier',
       deleteable: true,
@@ -12,7 +12,7 @@ class FloatToFixed extends AbstractNode {
       inputs: {
         number: {
           code: 'number',
-          name: 'Number',
+          name: 'Float',
           type: 'basic/float'
         },
         cut: {
@@ -33,10 +33,11 @@ class FloatToFixed extends AbstractNode {
 
   async execute(inputs) {
     this.debug('execute', inputs)
-    if (inputs.number) {
-      const ret = inputs.number.toFixed(inputs.cut)
-      this.setOutput('result', ret)
+    let ret = undefined
+    if (typeof inputs.number !== 'undefined' && typeof inputs.number.toFixed === 'function') {
+      ret = inputs.number.toFixed(inputs.cut)
     }
+    this.setOutput('result', ret)
   }
 }
 

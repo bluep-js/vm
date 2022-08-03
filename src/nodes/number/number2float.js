@@ -1,10 +1,10 @@
-const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
+const AbstractNode = require('../abstract')
 
 class NumberToFloat extends AbstractNode {
 
   static metadata() {
     return {
-      name: 'To String',
+      name: 'To Float',
       code: 'number/tofloat',
       type: 'modifier',
       deleteable: true,

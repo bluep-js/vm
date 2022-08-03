@@ -1,4 +1,4 @@
-const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
+const AbstractNode = require('../abstract')
 
 class MathAbs extends AbstractNode {
 
@@ -12,7 +12,7 @@ class MathAbs extends AbstractNode {
       inputs: {
         valA: {
           code: 'valA',
-          name: 'ValA',
+          name: 'Source',
           type: 'basic/template',
           template: 'NumberFloat'
         },
@@ -20,7 +20,7 @@ class MathAbs extends AbstractNode {
       outputs: {
         result: {
           code: 'result',
-          name: 'Result',
+          name: 'abs(Source)',
           type: 'basic/template',
           template: 'NumberFloat'
         }
@@ -29,7 +29,7 @@ class MathAbs extends AbstractNode {
         NumberFloat: {
           allow: ['basic/number', 'basic/float']
         }
-      },
+      }
     }
   }
 

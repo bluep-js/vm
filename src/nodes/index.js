@@ -4,6 +4,7 @@ const Return = require('./execute/return')
 const CallFunction = require('./execute/function')
 const Now = require('./execute/now')
 const Wait = require('./execute/wait')
+const Parallel = require('./execute/parallel')
 
 const Constructor = require('./class/constructor')
 const This = require('./class/this')
@@ -45,16 +46,15 @@ const NumberDecrement = require('./number/decrement')
 const NumberParseInteger = require('./number/parseInteger')
 const NumberIsInteger = require('./number/isInteger')
 
-const FloatPlus = require('./float/plusFloat')
-const FloatMinus = require('./float/minusFloat')
-const FloatDivide = require('./float/divideFloat')
-const FloatMultiply = require('./float/multiplyFloat')
-const FloatEq = require('./float/eqFloat')
-const FloatGt = require('./float/gtFloat')
-const FloatLt = require('./float/ltFloat')
+const FloatPlus = require('./float/plus')
+const FloatMinus = require('./float/minus')
+const FloatDivide = require('./float/divide')
+const FloatMultiply = require('./float/multiply')
+const FloatEq = require('./float/eq')
+const FloatGt = require('./float/gt')
+const FloatLt = require('./float/lt')
 const FloatToFixed = require('./float/toFixed')
-const FloatParse = require('./float/floatParse')
-
+const FloatParse = require('./float/parse')
 
 const MathPi = require('./math/pi')
 const MathAbs = require('./math/abs')
@@ -85,14 +85,12 @@ const MathSqrt2 = require('./math/sqrt2')
 const MathTrunc = require('./math/trunc')
 const MathLog2E = require('./math/log2E')
 
-
-
 const StringEq = require('./string/eq')
 const StringAppend = require('./string/append')
 const StringToUpperCase = require('./string/toUpperCase')
 const StringToLowerCase = require('./string/toLowerCase')
 const StringCharAt = require('./string/charAt')
-const StringRepeat = require('/string/repeat')
+const StringRepeat = require('./string/repeat')
 const StringIndexOf = require('./string/indexOf')
 const StringLength = require('./string/length')
 const StringLastIndexOf = require('./string/lastIndexOf')
@@ -103,14 +101,16 @@ const StringEndsWith = require('./string/endsWith')
 
 const DatetimeCreate = require('./datetime/create')
 const DatetimeUnwrap = require('./datetime/unwrap')
-const DatetimeToString = require('./datetime/tostring')
-const DatetimeAdd = require('./datetime/add')
+const DatetimeToString = require('./datetime/toString')
+const DatetimeShift = require('./datetime/shift')
 const DatetimeUtc = require('./datetime/utc')
 const DatetimeParse = require('./datetime/parse')
 const DatetimeIsSameOrBefore = require('./datetime/isSameOrBefore')
 const DatetimeIsSameOrAfter = require('./datetime/isSameOrAfter')
 const DatetimeUnwrapBoolean = require('./datetime/unwrapBoolean')
 const DatetimeIsValid = require('./datetime/isValid')
+const DatetimeUnix = require('./datetime/unix')
+const DatetimeFromUnix = require('./datetime/fromUnix')
 
 const BooleanAnd = require('./boolean/and')
 const BooleanOr = require('./boolean/or')
@@ -126,6 +126,7 @@ const Nodes = {
   CallFunction,
   Now,
   Wait,
+  Parallel,
 
   This,
   New,
@@ -230,13 +231,15 @@ const Nodes = {
   DatetimeCreate,
   DatetimeUnwrap,
   DatetimeToString,
-  DatetimeAdd,
+  DatetimeShift,
   DatetimeUtc,
   DatetimeParse,
   DatetimeIsSameOrBefore,
   DatetimeIsSameOrAfter,
   DatetimeUnwrapBoolean,
-  DatetimeIsValid
+  DatetimeIsValid,
+  DatetimeUnix,
+  DatetimeFromUnix
 }
 
 module.exports = Nodes

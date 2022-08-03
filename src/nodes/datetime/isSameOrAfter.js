@@ -2,14 +2,13 @@ const dayjs = require('dayjs')
 const isSameOrAfter = require("dayjs/plugin/isSameOrAfter")
 dayjs.extend(isSameOrAfter)
 
-
 const AbstractNode = require('../abstract')
 
 class DatetimeIsSameOrAfter extends AbstractNode {
 
   static metadata() {
     return {
-      name: 'IsSameOrAfter',
+      name: 'Is Same Or After',
       code: 'datetime/isSameOrAfter',
       type: 'modifier',
       deleteable: true,
@@ -17,19 +16,19 @@ class DatetimeIsSameOrAfter extends AbstractNode {
       inputs: {
         datetime: {
           code: 'datetime',
-          name: 'Datetime',
+          name: 'Source',
           type: 'basic/datetime'
         },
         valA: {
           code: 'valA',
-          name: 'ValA',
+          name: 'Compare',
           type: 'basic/datetime'
         },
       },
       outputs: {
         result: {
           code: 'result',
-          name: 'Result',
+          name: 'Same or After',
           type: 'basic/boolean'
         }
       }

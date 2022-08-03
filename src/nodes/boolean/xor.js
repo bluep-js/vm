@@ -4,7 +4,7 @@ class BooleanOr extends AbstractNode {
 
   static metadata() {
     return {
-      name: 'A ^ B',
+      name: 'A XOR B',
       code: 'boolean/xor',
       type: 'modifier',
       deleteable: true,
@@ -18,22 +18,34 @@ class BooleanOr extends AbstractNode {
         valB: {
           code: 'valB',
           name: 'B',
-          type: 'basic/boolean'
+          type: 'basic/boolean',
+          multiple: 'A'
         }
       },
       outputs: {
         result: {
           code: 'result',
-          name: 'Result',
+          name: 'A XOR B',
           type: 'basic/boolean'
         }
+      },
+      multiples: {
+        A: { value: 1 }
       }
     }
   }
 
+  _xor(a, b) {
+    return (!!a && !b) || (!a && !!b)
+  }
+
   async execute(inputs) {
     this.debug('execute', inputs)
-    let ret = (!!inputs.valA && !inputs.valB) || (!inputs.valA && !!inputs.valB)
+    let ret = this._xor(inputs.valA, inputs.valB)
+    Object.keys(inputs || {}).forEach(inp => {
+      if (inp.startsWith('valB_multiple_')
+        ret = this._xor(ret, inputs[inp])
+    })
     this.setOutput('result', ret)
   }
 }

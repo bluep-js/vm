@@ -1,10 +1,10 @@
-const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
+const AbstractNode = require('../abstract')
 
 class FloatDivide extends AbstractNode {
 
   static metadata() {
     return {
-      name: 'A. / B.',
+      name: 'A / B',
       code: 'float/divide',
       type: 'modifier',
       deleteable: true,
@@ -24,7 +24,7 @@ class FloatDivide extends AbstractNode {
       outputs: {
         result: {
           code: 'result',
-          name: 'Result',
+          name: 'A / B',
           type: 'basic/float'
         }
       }
@@ -34,7 +34,7 @@ class FloatDivide extends AbstractNode {
   async execute(inputs) {
     this.debug('execute', inputs)
     if (!!inputs.valB) {
-      this.error('DIVIDE BY ZERO IS PROHIBITED, STUPID!')
+      this.error('DIVIDE BY ZERO IS PROHIBITED!')
     }
     let ret = inputs.valA / inputs.valB
     this.setOutput('result', ret)

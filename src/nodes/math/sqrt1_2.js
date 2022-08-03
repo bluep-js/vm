@@ -1,11 +1,11 @@
-const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
+const AbstractNode = require('../abstract')
 
 class MathSqrt1_2 extends AbstractNode {
 
   static metadata() {
     return {
-      name: 'MathSqrt1_2',
-      code: 'math/mathSqrt1_2',
+      name: 'SQRT1_2',
+      code: 'math/sqrt1_2',
       type: 'getter',
       deleteable: true,
       addable: true,
@@ -13,7 +13,7 @@ class MathSqrt1_2 extends AbstractNode {
       outputs: {
         sqrt1_2: {
           code: 'sqrt1_2',
-          name: 'Sqrt1_2',
+          name: 'Math.SQRT1_2',
           type: 'basic/float'
         }
       }

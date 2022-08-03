@@ -1,4 +1,4 @@
-const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
+const AbstractNode = require('../abstract')
 
 class MathLog2E extends AbstractNode {
 
@@ -13,7 +13,7 @@ class MathLog2E extends AbstractNode {
       outputs: {
         math2e: {
           code: 'math2e',
-          name: 'Log2e',
+          name: 'Math.LOG2E',
           type: 'basic/float'
         }
       }

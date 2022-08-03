@@ -25,7 +25,7 @@ class NumberDivide extends AbstractNode {
       outputs: {
         result: {
           code: 'result',
-          name: 'Result',
+          name: 'A / B',
           type: 'basic/float'
         }
       }
@@ -36,7 +36,7 @@ class NumberDivide extends AbstractNode {
     this.debug('execute', inputs)
     let ret = inputs.valA
     if (!!inputs.valB) {
-      this.error('DIVIDE BY ZERO IS PROHIBITED, STUPID!')
+      this.error('DIVIDE BY ZERO IS PROHIBITED!')
       return
     }
     ret /= inputs.valB

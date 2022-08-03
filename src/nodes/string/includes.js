@@ -1,4 +1,4 @@
-const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
+const AbstractNode = require('../abstract')
 
 class StringIncludes extends AbstractNode {
 
@@ -12,7 +12,7 @@ class StringIncludes extends AbstractNode {
       inputs: {
         income: {
           code: 'income',
-          name: 'Income',
+          name: 'Source',
           type: 'basic/string'
         },
         search: {
@@ -24,7 +24,7 @@ class StringIncludes extends AbstractNode {
       outputs: {
         result: {
           code: 'result',
-          name: 'Result',
+          name: 'Is Includes',
           type: 'basic/boolean'
         }
       },

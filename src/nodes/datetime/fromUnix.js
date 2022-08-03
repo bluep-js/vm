@@ -1,28 +1,28 @@
 const dayjs = require('dayjs')
-
+ 
 const AbstractNode = require('../abstract')
 
-class DatetimeIsValid extends AbstractNode {
+class DatetimeFromUnix extends AbstractNode {
 
   static metadata() {
     return {
-      name: 'Is Valid',
-      code: 'datetime/isValid',
+      name: 'From Unix',
+      code: 'datetime/fromUnix',
       type: 'modifier',
       deleteable: true,
       addable: true,
       inputs: {
+        unix: {
+          code: 'unix',
+          name: 'Unix Epoch (sec/ms)',
+          type: 'basic/number'
+        }
+      },
+      outputs: {
         datetime: {
           code: 'datetime',
           name: 'Datetime',
           type: 'basic/datetime'
-        },
-      },
-      outputs: {     
-        result: {
-          code: 'result',
-          name: 'Is valid',
-          type: 'basic/boolean'
         }
       }
     }
@@ -30,10 +30,9 @@ class DatetimeIsValid extends AbstractNode {
 
   async execute(inputs) {
     this.debug('execute', inputs)
-    const a = dayjs(inputs.datetime)
-    this.setOutput('result', a.isValid())
+    const d = dayjs(inputs.unix)
+    this.setOutput('datetime', d) 
+  }
+}
 
-}}
-
-
-module.exports = DatetimeIsValid
+module.exports = DatetimeFromUnix

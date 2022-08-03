@@ -1,10 +1,10 @@
-const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
+const AbstractNode = require('../abstract')
 
 class StringEndsWith extends AbstractNode {
 
   static metadata() {
     return {
-      name: 'EndsWith',
+      name: 'Ends With',
       code: 'string/endsWith',
       type: 'modifier',
       deleteable: true,
@@ -12,19 +12,19 @@ class StringEndsWith extends AbstractNode {
       inputs: {
         valA: {
           code: 'valA',
-          name: 'A',
+          name: 'Source',
           type: 'basic/string'
         },
         valB: {
           code: 'valB',
-          name: 'B',
+          name: 'Template',
           type: 'basic/string'
         }
       },
       outputs: {
         result: {
           code: 'result',
-          name: 'Result',
+          name: 'Is Ends With',
           type: 'basic/boolean'
         }
       },

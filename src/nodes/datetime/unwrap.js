@@ -1,19 +1,15 @@
 const dayjs = require('dayjs')
 const toObject = require('dayjs/plugin/toObject')
-dayjs.extend(toObject)
-
 const dayOfYear = require('dayjs/plugin/dayOfYear')
-dayjs.extend(dayOfYear)
-
 const QuarterOfYear = require('dayjs/plugin/quarterOfYear')
-dayjs.extend(QuarterOfYear)
-
 const weekOfYear = require('dayjs/plugin/weekOfYear')
-dayjs.extend(weekOfYear)
-
 const weekday = require('dayjs/plugin/weekday')
-dayjs.extend(weekday)
 
+dayjs.extend(toObject)
+dayjs.extend(dayOfYear)
+dayjs.extend(QuarterOfYear)
+dayjs.extend(weekOfYear)
+dayjs.extend(weekday)
  
 const AbstractNode = require('../abstract')
 
@@ -88,8 +84,7 @@ class DatetimeUnwrap extends AbstractNode {
           code: 'dayOfWeek',
           name: 'Week day',
           type: 'basic/number'
-        },
-    
+        }
       }
     }
   }

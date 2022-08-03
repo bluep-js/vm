@@ -1,31 +1,26 @@
 const AbstractNode = require('../abstract')
 
-class NumberMulti extends AbstractNode {
+class FloatParse extends AbstractNode {
 
   static metadata() {
     return {
-      name: 'A * B',
-      code: 'number/mt',
+      name: 'Parse Float',
+      code: 'float/floatParse',
       type: 'modifier',
       deleteable: true,
       addable: true,
       inputs: {
         valA: {
           code: 'valA',
-          name: 'A',
-          type: 'basic/number'
-        },
-        valB: {
-          code: 'valB',
-          name: 'B',
-          type: 'basic/number'
+          name: 'Source',
+          type: 'basic/string'
         }
       },
       outputs: {
         result: {
           code: 'result',
           name: 'Result',
-          type: 'basic/number'
+          type: 'basic/float'
         }
       }
     }
@@ -33,9 +28,9 @@ class NumberMulti extends AbstractNode {
 
   async execute(inputs) {
     this.debug('execute', inputs)
-    let ret = inputs.valA * inputs.valB
+    let ret = parseFloat(inputs.valA)
     this.setOutput('result', ret)
   }
 }
 
-module.exports = NumberMulti
+module.exports = FloatParse

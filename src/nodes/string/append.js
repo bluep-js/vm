@@ -4,7 +4,7 @@ class StringAppend extends AbstractNode {
 
   static metadata() {
     return {
-      name: 'A+B',
+      name: 'A + B',
       code: 'string/append',
       type: 'modifier',
       inputs: {
@@ -23,7 +23,7 @@ class StringAppend extends AbstractNode {
       outputs: {
         result: {
           code: 'result',
-          name: 'Result',
+          name: 'A + B',
           type: 'basic/string'
         }
       },

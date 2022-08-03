@@ -1,25 +1,25 @@
-const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
+const AbstractNode = require('../abstract')
 
 class MathSin extends AbstractNode {
 
   static metadata() {
     return {
-      name: 'MathSin',
-      code: 'math/mathSin',
+      name: 'Sin',
+      code: 'math/sin',
       type: 'modifier',
       deleteable: true,
       addable: true,
       inputs: {
         valA: {
           code: 'valA',
-          name: 'ValA',
+          name: 'Source',
           type: 'basic/float' 
         },
       },
       outputs: {
         result: {
           code: 'result',
-          name: 'Result',
+          name: 'sin(Source)',
           type: 'basic/float' 
         }
       }

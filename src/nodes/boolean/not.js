@@ -19,7 +19,7 @@ class BooleanNot extends AbstractNode {
       outputs: {
         result: {
           code: 'result',
-          name: 'Result',
+          name: '!A',
           type: 'basic/boolean'
         }
       }

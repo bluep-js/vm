@@ -1,4 +1,4 @@
-const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
+const AbstractNode = require('../abstract')
 
 class MathLog extends AbstractNode {
 
@@ -12,14 +12,14 @@ class MathLog extends AbstractNode {
       inputs: {
         valA: {
           code: 'valA',
-          name: 'ValA',
+          name: 'Source',
           type: 'basic/float', 
         },
       },
       outputs: {
         result: {
           code: 'result',
-          name: 'Result',
+          name: 'log(Source)',
           type: 'basic/float' 
         }
       } 
@@ -28,10 +28,8 @@ class MathLog extends AbstractNode {
 
   async execute(inputs) {
     this.debug('execute', inputs)
-    if (inputs.valA) {
-      const ret = Math.log(inputs.valA)
-      this.setOutput('result', ret)
-    }
+    const ret = Math.log(inputs.valA)
+    this.setOutput('result', ret)
   }
 }
 

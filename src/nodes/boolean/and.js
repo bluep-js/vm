@@ -25,7 +25,7 @@ class BooleanAnd extends AbstractNode {
       outputs: {
         result: {
           code: 'result',
-          name: 'Result',
+          name: 'A && B',
           type: 'basic/boolean'
         }
       },

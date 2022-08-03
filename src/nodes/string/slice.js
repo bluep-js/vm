@@ -1,4 +1,4 @@
-const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
+const AbstractNode = require('../abstract')
 
 class StringSlice extends AbstractNode {
 
@@ -12,24 +12,24 @@ class StringSlice extends AbstractNode {
       inputs: {
         income: {
           code: 'income',
-          name: 'Income',
+          name: 'Source',
           type: 'basic/string'
         },
         valA: {
           code: 'valA',
-          name: 'A',
+          name: 'From',
           type: 'basic/number'
         },
         valB: {
           code: 'valB',
-          name: 'B',
+          name: 'To',
           type: 'basic/number'
         },
       },
       outputs: {
         result: {
           code: 'result',
-          name: 'Result',
+          name: 'Slice',
           type: 'basic/string'
         }
       },
@@ -38,10 +38,10 @@ class StringSlice extends AbstractNode {
 
   async execute(inputs) {
     this.debug('execute', inputs)
-    if (inputs.income) {
-      const ret = inputs.income.slice(inputs.valA, inputs.valB)
-      this.setOutput('result', ret)
-    }
+    const ret = typeof inputs.income === 'string'
+      ? inputs.income.slice(inputs.valA, inputs.valB)
+      : undefined
+    this.setOutput('result', ret)
   }
 }
 

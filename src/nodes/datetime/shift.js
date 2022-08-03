@@ -1,32 +1,29 @@
 const dayjs = require('dayjs')
-const toObject = require('dayjs/plugin/toObject')
-dayjs.extend(toObject)
-
 const AbstractNode = require('../abstract')
 
-class DatetimeAdd extends AbstractNode {
+class DatetimeShift extends AbstractNode {
 
   static metadata() {
     return {
-      name: 'Add',
-      code: 'datetime/add',
+      name: 'Shift',
+      code: 'datetime/shift',
       type: 'modifier',
       deleteable: true,
       addable: true,
       inputs: {
         value: {
           code: 'value',
-          name: 'Value',
+          name: 'Datetime',
           type: 'basic/datetime'
         },
         valA: {
           code: 'valA',
-          name: 'A',
+          name: 'Shift',
           type: 'basic/number',
         },
         type: {
           code: 'type',
-          name: 'A',
+          name: 'Granularity',
           type: 'basic/string',
         }
       },
@@ -49,6 +46,4 @@ class DatetimeAdd extends AbstractNode {
   }  
 }
 
-module.exports = DatetimeAdd
-
- 
+module.exports = DatetimeShift

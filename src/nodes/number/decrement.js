@@ -19,7 +19,7 @@ class NumberDecrement extends AbstractNode {
       outputs: {
         result: {
           code: 'result',
-          name: 'Result',
+          name: 'Number - 1',
           type: 'basic/number'
         }
       },  

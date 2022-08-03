@@ -1,4 +1,4 @@
-const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
+const AbstractNode = require('../abstract')
 
 class StringReplace extends AbstractNode {
 
@@ -38,10 +38,10 @@ class StringReplace extends AbstractNode {
 
   async execute(inputs) {
     this.debug('execute', inputs)
-    if (inputs.income) {
-      let res = inputs.income.replace(inputs.search, inputs.replace)
-      this.setOutput('result', res)
-    }
+    const res = typeof inputs.income === 'string'
+      ? inputs.income.replace(inputs.search, inputs.replace)
+      : undefined
+    this.setOutput('result', res)
   }
 }
 
