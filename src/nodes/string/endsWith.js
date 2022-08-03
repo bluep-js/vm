@@ -1,11 +1,11 @@
-const AbstractNode = require('../abstract')
+const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
 
-class NumberMulti extends AbstractNode {
+class StringEndsWith extends AbstractNode {
 
   static metadata() {
     return {
-      name: 'A * B',
-      code: 'number/mt',
+      name: 'EndsWith',
+      code: 'string/endsWith',
       type: 'modifier',
       deleteable: true,
       addable: true,
@@ -13,29 +13,34 @@ class NumberMulti extends AbstractNode {
         valA: {
           code: 'valA',
           name: 'A',
-          type: 'basic/number'
+          type: 'basic/string'
         },
         valB: {
           code: 'valB',
           name: 'B',
-          type: 'basic/number'
+          type: 'basic/string'
         }
       },
       outputs: {
         result: {
           code: 'result',
           name: 'Result',
-          type: 'basic/number'
+          type: 'basic/boolean'
         }
-      }
+      },
     }
   }
 
   async execute(inputs) {
     this.debug('execute', inputs)
-    let ret = inputs.valA * inputs.valB
-    this.setOutput('result', ret)
+    const a = inputs.valA
+    const b = inputs.valB
+    let res = false
+    if (a && a.endsWith(b))
+      res = true
+    this.setOutput('result', res)
   }
 }
 
-module.exports = NumberMulti
+
+module.exports = StringEndsWith

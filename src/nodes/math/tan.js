@@ -1,31 +1,26 @@
 const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
 
-class BooleanOr extends AbstractNode {
+class MathTan extends AbstractNode {
 
   static metadata() {
     return {
-      name: 'A ^ B',
-      code: 'boolean/xor',
+      name: 'MathTan',
+      code: 'math/MathTan',
       type: 'modifier',
       deleteable: true,
       addable: true,
       inputs: {
         valA: {
           code: 'valA',
-          name: 'A',
-          type: 'basic/boolean'
+          name: 'ValA',
+          type: 'basic/float' 
         },
-        valB: {
-          code: 'valB',
-          name: 'B',
-          type: 'basic/boolean'
-        }
       },
       outputs: {
         result: {
           code: 'result',
           name: 'Result',
-          type: 'basic/boolean'
+          type: 'basic/float'
         }
       }
     }
@@ -33,9 +28,11 @@ class BooleanOr extends AbstractNode {
 
   async execute(inputs) {
     this.debug('execute', inputs)
-    let ret = (!!inputs.valA && !inputs.valB) || (!inputs.valA && !!inputs.valB)
-    this.setOutput('result', ret)
+    if (inputs.valA) {
+      const ret = Math.tan(inputs.valA)
+      this.setOutput('result', ret)
+    }
   }
 }
 
-module.exports = BooleanOr
+module.exports = MathTan

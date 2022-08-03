@@ -9,10 +9,10 @@ class NumberDecrement extends AbstractNode {
       type: 'modifier',
       deleteable: true,
       addable: true,
-       inputs: {
-        result: {
-          code: 'result',
-          name: 'Result',
+      inputs: {
+        num: {
+          code: 'num',
+          name: 'Number',
           type: 'basic/number'
         }
       },
@@ -32,9 +32,8 @@ class NumberDecrement extends AbstractNode {
 
   async execute(inputs) {
     this.debug('execute', inputs)
-    this.setOutput('result', inputs.result-1)
+    this.setOutput('result', inputs.num - 1)
   }
-
 
 }
 

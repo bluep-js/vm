@@ -1,11 +1,11 @@
-const AbstractNode = require('../abstract')
+const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
 
-class NumberMulti extends AbstractNode {
+class StringLastIndexOf extends AbstractNode {
 
   static metadata() {
     return {
-      name: 'A * B',
-      code: 'number/mt',
+      name: 'LastIndexOf',
+      code: 'string/lastIndexOf',
       type: 'modifier',
       deleteable: true,
       addable: true,
@@ -13,12 +13,12 @@ class NumberMulti extends AbstractNode {
         valA: {
           code: 'valA',
           name: 'A',
-          type: 'basic/number'
+          type: 'basic/string'
         },
         valB: {
           code: 'valB',
           name: 'B',
-          type: 'basic/number'
+          type: 'basic/string'
         }
       },
       outputs: {
@@ -27,15 +27,17 @@ class NumberMulti extends AbstractNode {
           name: 'Result',
           type: 'basic/number'
         }
-      }
+      },
     }
   }
 
   async execute(inputs) {
     this.debug('execute', inputs)
-    let ret = inputs.valA * inputs.valB
-    this.setOutput('result', ret)
+    if (inputs.valA) {
+      const ret = inputs.valA.lastIndexOf(inputs.valB)
+      this.setOutput('result', ret)
+    }
   }
 }
 
-module.exports = NumberMulti
+module.exports = StringLastIndexOf

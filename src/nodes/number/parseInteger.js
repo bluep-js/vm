@@ -1,11 +1,11 @@
-const AbstractNode = require('../abstract')
+const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
 
-class NumberAssign extends AbstractNode {
+class NumberParseInteger extends AbstractNode {
 
   static metadata() {
     return {
-      name: 'A = B',
-      code: 'number/assign',
+      name: 'ParseInteger',
+      code: 'number/parseInteger',
       type: 'modifier',
       deleteable: true,
       addable: true,
@@ -13,12 +13,7 @@ class NumberAssign extends AbstractNode {
         valA: {
           code: 'valA',
           name: 'A',
-          type: 'basic/number'
-        },
-        valB: {
-          code: 'valB',
-          name: 'B',
-          type: 'basic/number'
+          type: 'basic/string'
         }
       },
       outputs: {
@@ -33,8 +28,11 @@ class NumberAssign extends AbstractNode {
 
   async execute(inputs) {
     this.debug('execute', inputs)
-    this.setOutput('result', inputs.valA = inputs.valB)
+    if (inputs.valA) {
+      let ret = parseInt(inputs.valA, 10)
+      this.setOutput('result', ret)
+    }
   }
 }
 
-module.exports = NumberAssign
+module.exports = NumberParseInteger

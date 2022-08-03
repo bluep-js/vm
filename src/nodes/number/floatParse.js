@@ -1,11 +1,11 @@
 const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
 
-class BooleanOr extends AbstractNode {
+class FloatParse extends AbstractNode {
 
   static metadata() {
     return {
-      name: 'A ^ B',
-      code: 'boolean/xor',
+      name: 'Parse',
+      code: 'float/floatParse',
       type: 'modifier',
       deleteable: true,
       addable: true,
@@ -13,19 +13,14 @@ class BooleanOr extends AbstractNode {
         valA: {
           code: 'valA',
           name: 'A',
-          type: 'basic/boolean'
-        },
-        valB: {
-          code: 'valB',
-          name: 'B',
-          type: 'basic/boolean'
+          type: 'basic/string'
         }
       },
       outputs: {
         result: {
           code: 'result',
           name: 'Result',
-          type: 'basic/boolean'
+          type: 'basic/float'
         }
       }
     }
@@ -33,9 +28,11 @@ class BooleanOr extends AbstractNode {
 
   async execute(inputs) {
     this.debug('execute', inputs)
-    let ret = (!!inputs.valA && !inputs.valB) || (!inputs.valA && !!inputs.valB)
-    this.setOutput('result', ret)
+    if (inputs.valA) {
+      let ret = parseFloat(inputs.valA)
+      this.setOutput('result', ret)
+    }
   }
 }
 
-module.exports = BooleanOr
+module.exports = FloatParse

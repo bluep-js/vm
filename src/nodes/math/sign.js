@@ -1,25 +1,20 @@
-const AbstractNode = require('../abstract')
+const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
 
-class NumberMulti extends AbstractNode {
+class MathSign extends AbstractNode {
 
   static metadata() {
     return {
-      name: 'A * B',
-      code: 'number/mt',
+      name: 'MathSign',
+      code: 'math/mathSign',
       type: 'modifier',
       deleteable: true,
       addable: true,
       inputs: {
         valA: {
           code: 'valA',
-          name: 'A',
-          type: 'basic/number'
+          name: 'ValA',
+          type: 'basic/float'
         },
-        valB: {
-          code: 'valB',
-          name: 'B',
-          type: 'basic/number'
-        }
       },
       outputs: {
         result: {
@@ -33,9 +28,9 @@ class NumberMulti extends AbstractNode {
 
   async execute(inputs) {
     this.debug('execute', inputs)
-    let ret = inputs.valA * inputs.valB
+    const ret = Math.sign(inputs.valA)
     this.setOutput('result', ret)
   }
 }
 
-module.exports = NumberMulti
+module.exports = MathSign

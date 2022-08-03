@@ -1,19 +1,19 @@
-const AbstractNode = require('../abstract')
+const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
 
-class NumberIncrement extends AbstractNode {
+class MathFloor extends AbstractNode {
 
   static metadata() {
     return {
-      name: '++',
-      code: 'number/increment',
+      name: 'Floor',
+      code: 'math/floor',
       type: 'modifier',
       deleteable: true,
       addable: true,
       inputs: {
-        num: {
-          code: 'num',
-          name: 'Number',
-          type: 'basic/number'
+        base: {
+          code: 'base',
+          name: 'Base',
+          type: 'basic/float'
         }
       },
       outputs: {
@@ -26,17 +26,11 @@ class NumberIncrement extends AbstractNode {
     }
   }
 
-
   async execute(inputs) {
     this.debug('execute', inputs)
-    this.setOutput('result', inputs.num+1)
+    const ret = Math.floor(inputs.base)
+    this.setOutput('result', ret)
   }
-
-
 }
 
-
-
- 
-
-module.exports = NumberIncrement
+module.exports = MathFloor

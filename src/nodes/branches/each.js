@@ -4,7 +4,8 @@ const AbstractNode = require('../abstract')
 class Each extends AbstractNode {
 
   static metadata() {
-    return { name: 'Each',
+    return {
+      name: 'Each',
       code: 'array/each',
       type: 'execute',
       deleteable: true,
