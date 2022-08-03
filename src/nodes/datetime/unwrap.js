@@ -1,7 +1,16 @@
 const dayjs = require('dayjs')
 const toObject = require('dayjs/plugin/toObject')
-dayjs.extend(toObject)
+const dayOfYear = require('dayjs/plugin/dayOfYear')
+const QuarterOfYear = require('dayjs/plugin/quarterOfYear')
+const weekOfYear = require('dayjs/plugin/weekOfYear')
+const weekday = require('dayjs/plugin/weekday')
 
+dayjs.extend(toObject)
+dayjs.extend(dayOfYear)
+dayjs.extend(QuarterOfYear)
+dayjs.extend(weekOfYear)
+dayjs.extend(weekday)
+ 
 const AbstractNode = require('../abstract')
 
 class DatetimeUnwrap extends AbstractNode {
@@ -56,6 +65,26 @@ class DatetimeUnwrap extends AbstractNode {
           name: 'Milliseconds',
           type: 'basic/number'
         },
+        quarter: {
+          code: 'quarter',
+          name: 'Quarter',
+          type: 'basic/number'
+        },
+        week: {
+          code: 'week',
+          name: 'Week of year',
+          type: 'basic/number'
+        },
+        dayOfYear: {
+          code: 'dayOfYear',
+          name: 'Day of year',
+          type: 'basic/number'
+        },
+        dayOfWeek: {
+          code: 'dayOfWeek',
+          name: 'Week day',
+          type: 'basic/number'
+        }
       }
     }
   }
@@ -67,6 +96,10 @@ class DatetimeUnwrap extends AbstractNode {
     Object.keys(ret).forEach(key => {
       this.setOutput(key, ret[key])
     })
+    this.setOutput('dayOfYear', d.dayOfYear())
+    this.setOutput('quarter', d.quarter())
+    this.setOutput('week', d.week())
+    this.setOutput('dayOfWeek', d.weekday()) 
   }
 }
 

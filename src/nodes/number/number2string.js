@@ -32,4 +32,5 @@ class NumberToString extends AbstractNode {
   }
 }
 
+
 module.exports = NumberToString

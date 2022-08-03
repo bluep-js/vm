@@ -10,6 +10,13 @@ class Now extends AbstractNode {
       type: 'execute',
       deleteable: true,
       addable: true,
+      inputs: {
+        call: {
+          code: 'call',
+          name: 'Call',
+          type: 'basic/execute'
+        }
+      },
       outputs: {
         return: {
           code: 'return',
@@ -20,13 +27,6 @@ class Now extends AbstractNode {
           code: 'datetime',
           name: 'Datetime',
           type: 'basic/datetime'
-        }
-      },
-      inputs: {
-        call: {
-          code: 'call',
-          name: 'Call',
-          type: 'basic/execute'
         }
       }
     }

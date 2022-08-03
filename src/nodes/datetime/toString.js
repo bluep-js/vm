@@ -1,6 +1,15 @@
 const dayjs = require('dayjs')
-const toObject = require('dayjs/plugin/toObject')
-dayjs.extend(toObject)
+const advancedFormat = require('dayjs/plugin/advancedFormat')
+const buddhistEra = require("dayjs/plugin/buddhistEra")
+const dayOfYear  = require('dayjs/plugin/dayOfYear')
+const quarterOfYear = require('dayjs/plugin/quarterOfYear') 
+const weekOfYear = require('dayjs/plugin/weekOfYear')
+
+dayjs.extend(advancedFormat)
+dayjs.extend(buddhistEra)
+dayjs.extend(dayOfYear)
+dayjs.extend(quarterOfYear)
+dayjs.extend(weekOfYear)
 
 const AbstractNode = require('../abstract')
 
@@ -9,7 +18,7 @@ class DatetimeToString extends AbstractNode {
   static metadata() {
     return {
       name: 'To String',
-      code: 'datetime/tostring',
+      code: 'datetime/toString',
       type: 'modifier',
       deleteable: true,
       addable: true,
@@ -31,7 +40,7 @@ class DatetimeToString extends AbstractNode {
           code: 'result',
           name: 'Result',
           type: 'basic/string'
-        },
+        }
       }
     }
   }
