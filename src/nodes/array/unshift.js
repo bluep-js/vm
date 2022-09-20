@@ -1,5 +1,4 @@
-const dayjs = require('dayjs')
-const AbstractNode = require('@bluepjs/vm/src/nodes/abstract')
+const AbstractNode = require('../abstract')
 
 class ArrayUnshift extends AbstractNode {
 
@@ -7,10 +6,15 @@ class ArrayUnshift extends AbstractNode {
     return {
       name: 'Unshift',
       code: 'array/unshift',
-      type: 'modifier',
+      type: 'execute',
       deleteable: true,
       addable: true,
       inputs: {
+        call: {
+          code: 'call',
+          name: 'Call',
+          type: 'basic/execute'
+        },
         array: {
           code: 'array',
           name: 'Array',
@@ -23,19 +27,24 @@ class ArrayUnshift extends AbstractNode {
           name: 'Element',
           type: 'basic/template',
           template: 'A',
-          multiple: 'A', 
-        }  
+          multiple: 'A',
+        }
       },
       outputs: {
         result: {
           code: 'result',
           name: 'Result',
-          type: 'basic/number' 
+          type: 'basic/execute'
+        },
+        resultNumber: {
+          code: 'resultNumber',
+          name: 'New array length',
+          type: 'basic/number'
         }
       },
       templates: {
         A: {
-          allow: ['*'] 
+          allow: ['*']
         }
       },
       multiples: {
@@ -48,10 +57,11 @@ class ArrayUnshift extends AbstractNode {
   }
 
   async execute(inputs) {
-    this.debug('execute', inputs.array )
-    let a = inputs.array.unshift(inputs.element)
-    this.setOutput('result', a)
-
+    this.debug('execute', inputs)
+    if (Array.isArray(inputs.array)) {
+      this.setOutput('resultNumber', inputs.array.unshift(inputs.element))
+    }
+    return 'result'
   }
 }
 

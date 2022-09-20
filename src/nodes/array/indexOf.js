@@ -1,4 +1,3 @@
-const dayjs = require('dayjs')
 const AbstractNode = require('../abstract')
 
 class ArrayIndexOf extends AbstractNode {
@@ -21,21 +20,21 @@ class ArrayIndexOf extends AbstractNode {
         element: {
           code: 'element',
           name: 'Element',
-          type: 'basic/string' 
+          type: 'basic/string'
         },
         index: {
           code: 'index',
           name: 'Index',
-          type: 'basic/number' 
-        }    
+          type: 'basic/number'
+        }
       },
       outputs: {
         result: {
           code: 'result',
           name: 'Result',
           type: 'basic/template',
-          template: 'A' 
-        } 
+          template: 'A'
+        }
       },
       templates: {
         A: {
@@ -46,12 +45,12 @@ class ArrayIndexOf extends AbstractNode {
   }
 
   async execute(inputs) {
-    this.debug('execute', inputs.array )
-    let a = inputs.array.indexOf(inputs.element, inputs.index)
-    this.setOutput('result', a)
-  }  
-
+    this.debug('execute', inputs.array)
+    if (Array.isArray(inputs.array)) {
+      let a = inputs.array.indexOf(inputs.element, inputs.index)
+      this.setOutput('result', a)
+    }
+  }
 }
 
 module.exports = ArrayIndexOf
- 

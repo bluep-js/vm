@@ -1,4 +1,3 @@
-const dayjs = require('dayjs')
 const AbstractNode = require('../abstract')
 
 class ArrayFill extends AbstractNode {
@@ -33,7 +32,7 @@ class ArrayFill extends AbstractNode {
           code: 'endIndex',
           name: 'To',
           type: 'basic/number'
-        } 
+        }
       },
       outputs: {
         result: {
@@ -42,7 +41,7 @@ class ArrayFill extends AbstractNode {
           type: 'basic/template',
           template: 'A',
           isArray: true
-        } 
+        }
       },
       templates: {
         A: {
@@ -64,4 +63,3 @@ class ArrayFill extends AbstractNode {
 }
 
 module.exports = ArrayFill
- 

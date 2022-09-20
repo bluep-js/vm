@@ -1,11 +1,10 @@
-const dayjs = require('dayjs')
 const AbstractNode = require('../abstract')
 
 class ArrayCopyWithin extends AbstractNode {
 
   static metadata() {
     return {
-      name: 'CopyWithin',
+      name: 'Copy within',
       code: 'array/copywithin',
       type: 'modifier',
       deleteable: true,
@@ -21,17 +20,17 @@ class ArrayCopyWithin extends AbstractNode {
         target: {
           code: 'target',
           name: 'Target',
-          type: 'basic/number' 
+          type: 'basic/number'
         },
         start: {
           code: 'start',
           name: 'Start',
-          type: 'basic/number', 
-        },  
+          type: 'basic/number',
+        },
         end: {
           code: 'end',
           name: 'End',
-          type: 'basic/number' 
+          type: 'basic/number'
         },
       },
       outputs: {
@@ -44,9 +43,7 @@ class ArrayCopyWithin extends AbstractNode {
       },
       templates: {
         A: {
-          allow: ['*'] // ,
-          // disallow: [],
-          // type: ''
+          allow: ['*']
         }
       },
     }
@@ -57,7 +54,7 @@ class ArrayCopyWithin extends AbstractNode {
     if (Array.isArray(inputs.array)) {
       const res = inputs.array.copyWithin(inputs.target, inputs.start, inputs.end)
       this.setOutput('result', res)
-    } 
+    }
   }
 }
 

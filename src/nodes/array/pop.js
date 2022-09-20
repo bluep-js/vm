@@ -1,4 +1,3 @@
-const dayjs = require('dayjs')
 const AbstractNode = require('../abstract')
 
 class ArrayPop extends AbstractNode {
@@ -7,10 +6,15 @@ class ArrayPop extends AbstractNode {
     return {
       name: 'Pop',
       code: 'array/pop',
-      type: 'modifier',
+      type: 'execute',
       deleteable: true,
       addable: true,
       inputs: {
+        call: {
+          code: 'call',
+          name: 'Call',
+          type: 'basic/execute'
+        },
         array: {
           code: 'array',
           name: 'Array',
@@ -23,9 +27,14 @@ class ArrayPop extends AbstractNode {
         result: {
           code: 'result',
           name: 'Result',
+          type: 'basic/execute'
+        },
+        returned: {
+          code: 'returned',
+          name: 'Returned',
           type: 'basic/template',
-          template: 'A' 
-        } 
+          template: 'A'
+        }
       },
       templates: {
         A: {
@@ -37,12 +46,11 @@ class ArrayPop extends AbstractNode {
 
   async execute(inputs) {
     this.debug('execute', inputs.array)
-    if (inputs.array) {
-      let res = inputs.array.pop()
-      this.setOutput('result', res)
+    if (Array.isArray(inputs.array)) {
+      this.setOutput('returned', inputs.array.pop(inputs.array))
     }
+    return 'result'
   }
 }
 
 module.exports = ArrayPop
- 

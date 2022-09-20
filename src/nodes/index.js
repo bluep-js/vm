@@ -17,7 +17,6 @@ const ClassVariableSet = require('./class/set')
 const If = require('./branches/if')
 const Switch = require('./branches/switch')
 const For = require('./branches/for')
-const Each = require('./branches/each')
 
 const VariableGet = require('./variable/get')
 const VariableSet = require('./variable/set')
@@ -60,27 +59,27 @@ const MathPi = require('./math/pi')
 const MathAbs = require('./math/abs')
 const MathAsin = require('./math/asin')
 const MathSqrt = require('./math/sqrt')
-const MathE = require('./math/e') 
-const MathPow = require('./math/pow') 
-const MathLN10 = require('./math/ln10') 
-const MathLN2 = require('./math/ln2') 
-const MathCeil = require('./math/ceil') 
-const MathFloor = require('./math/floor') 
-const MathRound = require('./math/round') 
-const MathRandom = require('./math/random') 
-const MathCbrt = require('./math/cbrt') 
-const MathExp = require('./math/exp') 
-const MathExpm1 = require('./math/expm1') 
-const MathLog = require('./math/log') 
-const MathLog2 = require('./math/log2') 
-const MathLog10 = require('./math/log10') 
+const MathE = require('./math/e')
+const MathPow = require('./math/pow')
+const MathLN10 = require('./math/ln10')
+const MathLN2 = require('./math/ln2')
+const MathCeil = require('./math/ceil')
+const MathFloor = require('./math/floor')
+const MathRound = require('./math/round')
+const MathRandom = require('./math/random')
+const MathCbrt = require('./math/cbrt')
+const MathExp = require('./math/exp')
+const MathExpm1 = require('./math/expm1')
+const MathLog = require('./math/log')
+const MathLog2 = require('./math/log2')
+const MathLog10 = require('./math/log10')
 const MathSin = require('./math/sin')
 const MathCos = require('./math/cos')
 const MathTan = require('./math/tan')
 const MathAcos = require('./math/acos')
 const MathAtan = require('./math/atan')
 const MathSign = require('./math/sign')
-const MathSqrt1_2 = require('./math/sqrt1_2') 
+const MathSqrt1_2 = require('./math/sqrt1_2')
 const MathSqrt2 = require('./math/sqrt2')
 const MathTrunc = require('./math/trunc')
 const MathLog2E = require('./math/log2E')
@@ -118,6 +117,26 @@ const BooleanNot = require('./boolean/not')
 const BooleanEq = require('./boolean/eq')
 
 const IsUndefined = require('./undefined/isundefined')
+
+const ArrayLength = require('./array/length')
+const ArrayIsArray = require('./array/isArray')
+const ArrayConcat = require('./array/concat')
+const ArrayAt = require('./array/at')
+const ArrayJoin = require('./array/join')
+const ArrayFill = require('./array/fill')
+const ArrayCopyWithin = require('./array/copywithin')
+const ArrayLastIndexOf = require('./array/lastIndexOf')
+const ArrayEach = require('./array/each')
+const ArrayUnshift = require('./array/unshift')
+const ArrayPop = require('./array/pop')
+const ArrayShift = require('./array/shift')
+const ArrayPush = require('./array/push')
+const ArrayReverse = require('./array/reverse')
+const ArraySplice = require('./array/splice')
+const ArrayIncludes = require('./array/includes')
+const ArrayIndexOf = require('./array/indexOf')
+const ArraySlice = require('./array/slice')
+
 
 const Nodes = {
   Call,
@@ -193,7 +212,6 @@ const Nodes = {
   If,
   Switch,
   For,
-  Each,
 
   BooleanAnd,
   BooleanOr,
@@ -215,9 +233,9 @@ const Nodes = {
   NumberDecrement,
   NumberIsInteger,
   NumberParseInteger,
- 
+
   FloatPlus,
-  FloatMinus, 
+  FloatMinus,
   FloatDivide,
   FloatMultiply,
   FloatEq,
@@ -225,7 +243,7 @@ const Nodes = {
   FloatLt,
   FloatToFixed,
   FloatParse,
- 
+
   IsUndefined,
 
   DatetimeCreate,
@@ -239,7 +257,26 @@ const Nodes = {
   DatetimeUnwrapBoolean,
   DatetimeIsValid,
   DatetimeUnix,
-  DatetimeFromUnix
+  DatetimeFromUnix,
+
+  ArrayLength,
+  ArrayIsArray,
+  ArrayConcat,
+  ArrayAt,
+  ArrayJoin,
+  ArrayFill,
+  ArrayCopyWithin,
+  ArrayLastIndexOf,
+  ArrayPop,
+  ArrayUnshift,
+  ArrayReverse,
+  ArraySplice,
+  ArrayIncludes,
+  ArraySlice,
+  ArrayIndexOf,
+  ArrayPush,
+  ArrayShift,
+  ArrayEach
 }
 
 module.exports = Nodes

@@ -1,4 +1,3 @@
-const dayjs = require('dayjs')
 const AbstractNode = require('../abstract')
 
 class ArrayEach extends AbstractNode {
@@ -49,9 +48,7 @@ class ArrayEach extends AbstractNode {
       },
       templates: {
         A: {
-          allow: ['*'] // ,
-          // disallow: [],
-          // type: ''
+          allow: ['*']  
         }
       }
     }

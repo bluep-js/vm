@@ -1,11 +1,10 @@
-const dayjs = require('dayjs')
 const AbstractNode = require('../abstract')
 
 class ArrayLastIndexOf extends AbstractNode {
 
   static metadata() {
     return {
-      name: 'LastIndexOf',
+      name: 'Last index of',
       code: 'array/lastIndexOf',
       type: 'modifier',
       deleteable: true,
@@ -17,39 +16,34 @@ class ArrayLastIndexOf extends AbstractNode {
           type: 'basic/template',
           template: 'A',
           isArray: true
-        }, 
+        },
         fromElement: {
           code: 'fromElement',
           name: 'Element',
-          type: 'basic/number'
-        },
-        fromIndex: {
-          code: 'fromindex',
-          name: 'Index',
           type: 'basic/string'
-        } 
+        },
       },
       outputs: {
         result: {
           code: 'result',
           name: 'Result',
-          type: 'basic/number' 
+          type: 'basic/number'
         },
       },
       templates: {
         A: {
-          allow: ['*']  
+          allow: ['*']
         }
-      } 
+      }
     }
   }
 
   async execute(inputs) {
-    this.debug('execute', inputs.array )
+    this.debug('execute', inputs.array)
     if (Array.isArray(inputs.array)) {
-      const res = inputs.array.lastIndexOf(inputs.fromElement || inputs.fromIndex);
+      const res = inputs.array.lastIndexOf(inputs.fromElement);
       this.setOutput('result', res)
-    } 
+    }
   }
 }
 

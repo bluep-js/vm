@@ -1,4 +1,3 @@
-const dayjs = require('dayjs')
 const AbstractNode = require('../abstract')
 
 class ArrayReverse extends AbstractNode {
@@ -30,18 +29,18 @@ class ArrayReverse extends AbstractNode {
       },
       templates: {
         A: {
-          allow: ['*'] // ,
-          // disallow: [],
-          // type: ''
+          allow: ['*']
         }
       }
     }
   }
 
   async execute(inputs) {
-    this.debug('execute', inputs) 
-    this.setOutput('result', inputs.array.reverse())
-  }   
+    this.debug('execute', inputs)
+    if (Array.isArray(inputs.array)) {
+      this.setOutput('result', inputs.array.reverse())
+    }
+  }
 }
 
 module.exports = ArrayReverse

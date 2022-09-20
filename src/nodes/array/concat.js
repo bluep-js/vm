@@ -1,4 +1,3 @@
-const dayjs = require('dayjs')
 const AbstractNode = require('../abstract')
 
 class ArrayConcat extends AbstractNode {
@@ -16,13 +15,13 @@ class ArrayConcat extends AbstractNode {
           name: 'Array',
           type: 'basic/template',
           template: 'A',
-          isArray: true,     
+          isArray: true,
         },
         array2: {
           code: 'array2',
           name: 'Array2',
           type: 'basic/template',
-          template: 'A',          
+          template: 'A',
           multiple: 'A',
           isArray: true,
         }
@@ -38,9 +37,7 @@ class ArrayConcat extends AbstractNode {
       },
       templates: {
         A: {
-          allow: ['*'] // ,
-          // disallow: [],
-          // type: ''
+          allow: ['*']
         }
       },
       multiples: {
@@ -52,17 +49,16 @@ class ArrayConcat extends AbstractNode {
     }
   }
 
-  async execute(inputs) {    
+  async execute(inputs) {
     let ret = inputs.array
-    if (Array.isArray(inputs.array)) { Object.keys(inputs).forEach(inp => {
-      if (inp.startsWith('array2')) ret = ret.concat(inputs[inp])
-    })
-    this.setOutput('result', ret)
-  }
-   
+    if (Array.isArray(inputs.array, inputs.array2)) {
+      Object.keys(inputs).forEach(inp => {
+        if (inp.startsWith('array2')) ret = ret.concat(inputs[inp])
+      })
+      this.setOutput('result', ret)
+    }
+
   }
 }
-  
 
 module.exports = ArrayConcat
- 

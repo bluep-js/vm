@@ -1,4 +1,3 @@
-const dayjs = require('dayjs')
 const AbstractNode = require('../abstract')
 
 class ArrayIncludes extends AbstractNode {
@@ -34,17 +33,17 @@ class ArrayIncludes extends AbstractNode {
       },
       templates: {
         A: {
-          allow: ['*'] // ,
-          // disallow: [],
-          // type: ''
+          allow: ['*']
         }
       }
     }
   }
 
   async execute(inputs) {
-    this.debug('execute', inputs) 
-    this.setOutput('result', inputs.array.includes(inputs.element))
+    this.debug('execute', inputs)
+    if (Array.isArray(inputs.array)) {
+      this.setOutput('result', inputs.array.includes(inputs.element))
+    }
   }
 }
 

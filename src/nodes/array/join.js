@@ -1,4 +1,3 @@
-const dayjs = require('dayjs')
 const AbstractNode = require('../abstract')
 
 class ArrayJoin extends AbstractNode {
@@ -21,8 +20,8 @@ class ArrayJoin extends AbstractNode {
         separator: {
           code: 'separator',
           name: 'Separator',
-          type: 'basic/string' 
-        } 
+          type: 'basic/string'
+        }
       },
       outputs: {
         result: {
@@ -33,9 +32,7 @@ class ArrayJoin extends AbstractNode {
       },
       templates: {
         A: {
-          allow: ['*'] // ,
-          // disallow: [],
-          // type: ''
+          allow: ['*']
         }
       },
     }
@@ -47,9 +44,8 @@ class ArrayJoin extends AbstractNode {
       const res = inputs.array.join(inputs.separator)
       this.setOutput('result', res)
     }
- 
+
   }
 }
 
 module.exports = ArrayJoin
-/* inputs.array) */

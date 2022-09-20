@@ -1,4 +1,3 @@
-const dayjs = require('dayjs')
 const AbstractNode = require('../abstract')
 
 class ArraySplice extends AbstractNode {
@@ -7,10 +6,15 @@ class ArraySplice extends AbstractNode {
     return {
       name: 'Splice',
       code: 'array/splice',
-      type: 'modifier',
+      type: 'execute',
       deleteable: true,
       addable: true,
       inputs: {
+        call: {
+          code: 'call',
+          name: 'Call',
+          type: 'basic/execute'
+        },
         array: {
           code: 'array',
           name: 'Array',
@@ -22,38 +26,40 @@ class ArraySplice extends AbstractNode {
           code: 'start',
           name: 'Start',
           type: 'basic/number'
-        }, 
-        item: {
-          code: 'item',
-          name: 'Item',
-          type: 'basic/template',
-          template: 'A',
-        }, 
+        },
+        deleteCount: {
+          code: 'deleteCount',
+          name: 'delete count',
+          type: 'basic/number'
+        }
       },
       outputs: {
         result: {
           code: 'result',
           name: 'Result',
-          type: 'basic/template',
-          template: 'A',
-          isArray: true
+          type: 'basic/execute'
         },
+        resultNumber: {
+          code: 'resultNumber',
+          name: 'New array length',
+          type: 'basic/number'
+        }
       },
       templates: {
         A: {
-          allow: ['*'] // ,
-          // disallow: [],
-          // type: ''
+          allow: ['*']
         }
       }
     }
   }
 
   async execute(inputs) {
-    this.debug('execute', inputs )
-    this.setOutput('result', inputs.array.splice(inputs.start, inputs.item))
+    this.debug('execute', inputs)
+    if (Array.isArray(inputs.array)) {
+      this.setOutput('resultNumber', inputs.array.splice(inputs.start && inputs.deleteCount))
+    }
+    return 'result'
   }
 }
 
 module.exports = ArraySplice
- 

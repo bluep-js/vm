@@ -1,4 +1,3 @@
-const dayjs = require('dayjs')
 const AbstractNode = require('../abstract')
 
 class ArraySlice extends AbstractNode {
@@ -40,9 +39,7 @@ class ArraySlice extends AbstractNode {
       },
       templates: {
         A: {
-          allow: ['*'] // ,
-          // disallow: [],
-          // type: ''
+          allow: ['*']
         }
       }
     }
@@ -50,13 +47,10 @@ class ArraySlice extends AbstractNode {
 
   async execute(inputs) {
     this.debug('execute', inputs.valA, inputs.valB)
-    this.setOutput('result', inputs.array.slice(inputs.valA, inputs.valB))
+    if (Array.isArray(inputs.array)) {
+      this.setOutput('result', inputs.array.slice(inputs.valA, inputs.valB))
+    }
   }
 }
 
 module.exports = ArraySlice
-/* 
-
-const d = inputs.isArray (inputs.valA && inputs.valB)
-    const ret = d.slice(inputs.valA, inputs.valB)
-    this.setOutput('result', ret)  */

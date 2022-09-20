@@ -1,4 +1,3 @@
-const dayjs = require('dayjs')
 const AbstractNode = require('../abstract')
 
 class ArrayLength extends AbstractNode {
@@ -28,9 +27,7 @@ class ArrayLength extends AbstractNode {
       },
       templates: {
         A: {
-          allow: ['*'] // ,
-          // disallow: [],
-          // type: ''
+          allow: ['*']
         }
       }
     }
@@ -38,8 +35,10 @@ class ArrayLength extends AbstractNode {
 
   async execute(inputs) {
     this.debug('execute', inputs)
-    const a = inputs.array
-    this.setOutput('result', a.length)
+    if (Array.isArray(inputs.array)) {
+      const a = inputs.array
+      this.setOutput('result', a.length)
+    }
   }
 }
 

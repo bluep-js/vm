@@ -32,6 +32,7 @@ class StringToLowerCase extends AbstractNode {
       ? inputs.income.toLowerCase()
       : undefined
     this.setOutput('result', ret)
+
   }
 }
 
