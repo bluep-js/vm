@@ -42,9 +42,7 @@ class FloatIsGreater extends AbstractNode {
     const b = inputs.numberB
     const eq = inputs.equal
     let res = false
-    if (a > b)
-      res = true
-    if (eq && a === b)
+    if (a > b || (eq && a === b))
       res = true
     this.setOutput('result', res)
   }

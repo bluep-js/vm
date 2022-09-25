@@ -35,7 +35,7 @@ class BooleanOr extends AbstractNode {
     }
   }
 
-  _xor(a, b) {
+   _xor(a, b) {
     return (!!a && !b) || (!a && !!b)
   }
 
@@ -48,6 +48,6 @@ class BooleanOr extends AbstractNode {
     })
     this.setOutput('result', ret)
   }
-}
+}  
 
 module.exports = BooleanOr

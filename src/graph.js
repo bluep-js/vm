@@ -128,6 +128,7 @@ class Graph {
     // console.log('executeNode:: ', nodeId)
     const NodeClass = this._vm.nodeClass(nodeInfo.code)
     const node = new NodeClass(this, context)
+    // console.log(nodeInfo.code)
     node.node(nodeInfo)
     return await node.prepareAndExecute()
   }
