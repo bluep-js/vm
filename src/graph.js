@@ -12,7 +12,8 @@ class Graph {
   }
 
   load(graph) {
-    this._graph = graph
+    // deep clone
+    this._graph = JSON.parse(JSON.stringify(graph))
   }
 
   toObject() {
@@ -128,6 +129,7 @@ class Graph {
     // console.log('executeNode:: ', nodeId)
     const NodeClass = this._vm.nodeClass(nodeInfo.code)
     const node = new NodeClass(this, context)
+    // console.log(nodeInfo.code)
     node.node(nodeInfo)
     return await node.prepareAndExecute()
   }

@@ -1,7 +1,6 @@
-const dayjs = require('dayjs')
 const AbstractNode = require('../abstract')
 
-class Each extends AbstractNode {
+class ArrayEach extends AbstractNode {
 
   static metadata() {
     return {
@@ -49,9 +48,7 @@ class Each extends AbstractNode {
       },
       templates: {
         A: {
-          allow: ['*'] // ,
-          // disallow: [],
-          // type: ''
+          allow: ['*']  
         }
       }
     }
@@ -70,4 +67,4 @@ class Each extends AbstractNode {
   }
 }
 
-module.exports = Each
+module.exports = ArrayEach

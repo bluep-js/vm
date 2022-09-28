@@ -17,7 +17,7 @@ class StringLength extends AbstractNode {
       outputs: {
         result: {
           code: 'result',
-          name: 'Result',
+          name: 'Length',
           type: 'basic/number'
         }
       }
@@ -27,7 +27,7 @@ class StringLength extends AbstractNode {
   async execute(inputs) {
     this.debug('execute', inputs)
     const ret = typeof inputs.source === 'string'
-      ? string.length
+      ? inputs.source.length
       : undefined
     this.setOutput('result', ret)
   }

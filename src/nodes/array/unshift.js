@@ -1,0 +1,71 @@
+const AbstractNode = require('../abstract')
+
+class ArrayUnshift extends AbstractNode {
+
+  static metadata() {
+    return {
+      name: 'Unshift',
+      code: 'array/unshift',
+      type: 'execute',
+      deleteable: true,
+      addable: true,
+      inputs: {
+        call: {
+          code: 'call',
+          name: 'Call',
+          type: 'basic/execute'
+        },
+        array: {
+          code: 'array',
+          name: 'Array',
+          type: 'basic/template',
+          template: 'A',
+          isArray: true
+        },
+        element: {
+          code: 'element',
+          name: 'Element',
+          type: 'basic/template',
+          template: 'A',
+          multiple: 'A',
+        }
+      },
+      outputs: {
+        result: {
+          code: 'result',
+          name: 'Result',
+          type: 'basic/execute'
+        },
+        resultNumber: {
+          code: 'resultNumber',
+          name: 'New array length',
+          type: 'basic/number'
+        }
+      },
+      templates: {
+        A: {
+          allow: ['*']
+        }
+      },
+      multiples: {
+        A: {
+          value: 1,
+          min: 1
+        }
+      },
+    }
+  }
+
+  async execute(inputs) {
+    this.debug('execute', inputs)
+    if (Array.isArray(inputs.array)) {
+      this.setOutput('resultNumber', inputs.array.unshift(inputs.element))
+    }
+    return 'result'
+  }
+}
+
+
+
+
+module.exports = ArrayUnshift
