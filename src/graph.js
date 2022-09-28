@@ -12,7 +12,8 @@ class Graph {
   }
 
   load(graph) {
-    this._graph = graph
+    // deep clone
+    this._graph = JSON.parse(JSON.stringify(graph))
   }
 
   toObject() {
