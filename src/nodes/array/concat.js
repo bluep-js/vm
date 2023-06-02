@@ -14,16 +14,14 @@ class ArrayConcat extends AbstractNode {
           code: 'array',
           name: 'Array',
           type: 'basic/template',
-          template: 'A',
-          isArray: true,
+          template: 'A'
         },
         array2: {
           code: 'array2',
           name: 'Array2',
           type: 'basic/template',
           template: 'A',
-          multiple: 'A',
-          isArray: true,
+          multiple: 'A'
         }
       },
       outputs: {
@@ -31,13 +29,15 @@ class ArrayConcat extends AbstractNode {
           code: 'result',
           name: 'Result',
           type: 'basic/template',
-          template: 'A',
-          isArray: true
+          template: 'A'
         },
       },
       templates: {
         A: {
-          allow: ['*']
+          allow: ['*'],
+          info: {
+            isArray: 1
+          }
         }
       },
       multiples: {

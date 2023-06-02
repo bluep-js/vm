@@ -4,7 +4,7 @@ class ArrayIsArray extends AbstractNode {
 
   static metadata() {
     return {
-      name: 'IsArray',
+      name: 'Is Array',
       code: 'array/isArray',
       type: 'modifier',
       deleteable: true,
@@ -14,8 +14,7 @@ class ArrayIsArray extends AbstractNode {
           code: 'array',
           name: 'Array',
           type: 'basic/template',
-          template: 'A',
-          isArray: true
+          template: 'A'
         }
       },
       outputs: {
@@ -27,7 +26,11 @@ class ArrayIsArray extends AbstractNode {
       },
       templates: {
         A: {
-          allow: ['*']
+          allow: ['*'],
+          info: {
+            isArray: 0,
+            canBeArray: true
+          }
         }
       }
     }

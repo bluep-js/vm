@@ -14,8 +14,7 @@ class ArrayAt extends AbstractNode {
           code: 'array',
           name: 'Array',
           type: 'basic/template',
-          template: 'A',
-          isArray: true
+          template: 'A/array',
         },
         index: {
           code: 'index',
@@ -33,7 +32,18 @@ class ArrayAt extends AbstractNode {
       },
       templates: {
         A: {
-          allow: ['*'] 
+          allow: ['*'],
+          variants: {
+            array: {
+              $add: {
+                isArray: 1
+              }
+            }
+          },
+          info: {
+            isArray: 0,
+            canBeArray: true
+          }
         }
       }
     }
