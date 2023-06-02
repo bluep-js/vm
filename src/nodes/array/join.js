@@ -15,7 +15,6 @@ class ArrayJoin extends AbstractNode {
           name: 'Array',
           type: 'basic/template',
           template: 'A',
-          isArray: true
         },
         separator: {
           code: 'separator',
@@ -32,7 +31,10 @@ class ArrayJoin extends AbstractNode {
       },
       templates: {
         A: {
-          allow: ['*']
+          allow: ['*'],
+          info: {
+            isArray: 1,
+          }
         }
       },
     }

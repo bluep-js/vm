@@ -14,13 +14,13 @@ class ArrayLastIndexOf extends AbstractNode {
           code: 'array',
           name: 'Array',
           type: 'basic/template',
-          template: 'A',
-          isArray: true
+          template: 'A/array',
         },
         fromElement: {
           code: 'fromElement',
           name: 'Element',
-          type: 'basic/string'
+          type: 'basic/template',
+          template: 'A',
         },
       },
       outputs: {
@@ -32,7 +32,17 @@ class ArrayLastIndexOf extends AbstractNode {
       },
       templates: {
         A: {
-          allow: ['*']
+          allow: ['*'],
+          info: {
+            isArray: 0,
+          },
+          variants: {
+            array: {
+              $add: {
+                isArray: 1
+              }
+            }
+          },
         }
       }
     }

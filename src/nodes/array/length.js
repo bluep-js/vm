@@ -15,7 +15,6 @@ class ArrayLength extends AbstractNode {
           name: 'Array',
           type: 'basic/template',
           template: 'A',
-          isArray: true
         }
       },
       outputs: {
@@ -27,7 +26,10 @@ class ArrayLength extends AbstractNode {
       },
       templates: {
         A: {
-          allow: ['*']
+          allow: ['*'],
+          info: {
+            isArray: 1,
+          },
         }
       }
     }

@@ -14,8 +14,7 @@ class ArrayCopyWithin extends AbstractNode {
           code: 'array',
           name: 'Array',
           type: 'basic/template',
-          template: 'A',
-          isArray: true
+          template: 'A'
         },
         target: {
           code: 'target',
@@ -37,15 +36,18 @@ class ArrayCopyWithin extends AbstractNode {
         result: {
           code: 'result',
           name: 'Result',
-          type: 'basic/string',
-          isArray: true
+          type: 'basic/template',
+          template: 'A'
         },
       },
       templates: {
         A: {
-          allow: ['*']
+          allow: ['*'],
+          info: {
+            isArray: 1
+          }
         }
-      },
+      }
     }
   }
 

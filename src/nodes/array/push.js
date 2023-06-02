@@ -19,15 +19,14 @@ class ArrayPush extends AbstractNode {
           code: 'array',
           name: 'Array',
           type: 'basic/template',
-          template: 'A',
-          isArray: true
+          template: 'A/array',
         },
         element: {
           code: 'element',
           name: 'Element',
           type: 'basic/template',
           template: 'A',
-          multiple: 'A',
+          // multiple: 'A',
         }
       },
       outputs: {
@@ -44,7 +43,17 @@ class ArrayPush extends AbstractNode {
       },
       templates: {
         A: {
-          allow: ['*']
+          allow: ['*'],
+          info: {
+            isArray: 0,
+          },
+          variants: {
+            array: {
+              $add: {
+                isArray: 1
+              }
+            }
+          },
         }
       },
       multiples: {
