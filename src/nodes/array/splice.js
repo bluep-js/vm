@@ -20,7 +20,6 @@ class ArraySplice extends AbstractNode {
           name: 'Array',
           type: 'basic/template',
           template: 'A',
-          isArray: true
         },
         start: {
           code: 'start',
@@ -47,7 +46,10 @@ class ArraySplice extends AbstractNode {
       },
       templates: {
         A: {
-          allow: ['*']
+          allow: ['*'],
+          info: {
+            isArray: 1,
+          },
         }
       }
     }

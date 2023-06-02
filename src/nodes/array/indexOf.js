@@ -14,31 +14,35 @@ class ArrayIndexOf extends AbstractNode {
           code: 'array',
           name: 'Array',
           type: 'basic/template',
-          template: 'A',
-          isArray: true
+          template: 'A/array'
         },
         element: {
           code: 'element',
           name: 'Element',
-          type: 'basic/string'
-        },
-        index: {
-          code: 'index',
-          name: 'Index',
-          type: 'basic/number'
+          type: 'basic/template',
+          template: 'A'
         }
       },
       outputs: {
         result: {
           code: 'result',
           name: 'Result',
-          type: 'basic/template',
-          template: 'A'
+          type: 'basic/number'
         }
       },
       templates: {
         A: {
-          allow: ['*']
+          allow: ['*'],
+          variants: {
+            array: {
+              $add: {
+                isArray: 1
+              }
+            }
+          },
+          info: {
+            isArray: 0
+          }
         }
       }
     }
@@ -47,7 +51,7 @@ class ArrayIndexOf extends AbstractNode {
   async execute(inputs) {
     this.debug('execute', inputs.array)
     if (Array.isArray(inputs.array)) {
-      let a = inputs.array.indexOf(inputs.element, inputs.index)
+      let a = inputs.array.indexOf(inputs.element)
       this.setOutput('result', a)
     }
   }

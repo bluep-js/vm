@@ -14,8 +14,7 @@ class ArrayFill extends AbstractNode {
           code: 'array',
           name: 'Array',
           type: 'basic/template',
-          template: 'A',
-          isArray: true
+          template: 'A/array'
         },
         value: {
           code: 'value',
@@ -39,13 +38,23 @@ class ArrayFill extends AbstractNode {
           code: 'result',
           name: 'Result',
           type: 'basic/template',
-          template: 'A',
-          isArray: true
+          template: 'A/array'
         }
       },
       templates: {
         A: {
-          allow: ['*']
+          allow: ['*'],
+          variants: {
+            array: {
+              $add: {
+                isArray: 1
+              }
+            }
+          },
+          info: {
+            isArray: 0,
+            canBeArray: true
+          }
         }
       }
     }

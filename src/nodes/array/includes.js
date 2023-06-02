@@ -14,8 +14,7 @@ class ArrayIncludes extends AbstractNode {
           code: 'array',
           name: 'Array',
           type: 'basic/template',
-          template: 'A',
-          isArray: true
+          template: 'A/array'
         },
         element: {
           code: 'element',
@@ -33,7 +32,17 @@ class ArrayIncludes extends AbstractNode {
       },
       templates: {
         A: {
-          allow: ['*']
+          allow: ['*'],
+          variants: {
+            array: {
+              $add: {
+                isArray: 1
+              }
+            }
+          },
+          info: {
+            isArray: 0
+          }
         }
       }
     }

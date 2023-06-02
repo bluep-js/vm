@@ -137,6 +137,11 @@ const ArrayIncludes = require('./array/includes')
 const ArrayIndexOf = require('./array/indexOf')
 const ArraySlice = require('./array/slice')
 
+const ColorEq = require('./color/eq')
+const ColorToRgb = require('./color/color2rgb')
+const ColorToHls = require('./color/color2hls')
+const HlsToColor = require('./color/hls2color')
+const RgbToColor = require('./color/rgb2color')
 
 const Nodes = {
   Call,
@@ -276,7 +281,13 @@ const Nodes = {
   ArrayIndexOf,
   ArrayPush,
   ArrayShift,
-  ArrayEach
+  ArrayEach,
+
+  ColorEq,
+  ColorToRgb,
+  ColorToHls,
+  RgbToColor,
+  HlsToColor
 }
 
 module.exports = Nodes

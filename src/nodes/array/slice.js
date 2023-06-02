@@ -15,7 +15,6 @@ class ArraySlice extends AbstractNode {
           name: 'Array',
           type: 'basic/template',
           template: 'A',
-          isArray: true
         },
         valA: {
           code: 'valA',
@@ -34,12 +33,14 @@ class ArraySlice extends AbstractNode {
           name: 'Result',
           type: 'basic/template',
           template: 'A',
-          isArray: true
         },
       },
       templates: {
         A: {
-          allow: ['*']
+          allow: ['*'],
+          info: {
+            isArray: 1,
+          },
         }
       }
     }

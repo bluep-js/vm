@@ -19,8 +19,7 @@ class ArrayEach extends AbstractNode {
           code: 'array',
           name: 'Array',
           type: 'basic/template',
-          template: 'A',
-          isArray: true
+          template: 'A/array',
         }
       },
       outputs: {
@@ -38,7 +37,7 @@ class ArrayEach extends AbstractNode {
           code: 'element',
           name: 'element',
           type: 'basic/template',
-          template: 'A'
+          template: 'A',
         },
         return: {
           code: 'return',
@@ -48,7 +47,18 @@ class ArrayEach extends AbstractNode {
       },
       templates: {
         A: {
-          allow: ['*']  
+          allow: ['*'],
+          variants: {
+            array: {
+              $add: {
+                isArray: 1
+              }
+            }
+          },
+          info: {
+            isArray: 0,
+            canBeArray: true
+          }
         }
       }
     }

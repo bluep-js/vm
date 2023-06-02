@@ -15,7 +15,6 @@ class ArrayReverse extends AbstractNode {
           name: 'Array',
           type: 'basic/template',
           template: 'A',
-          isArray: true
         }
       },
       outputs: {
@@ -24,12 +23,14 @@ class ArrayReverse extends AbstractNode {
           name: 'Result',
           type: 'basic/template',
           template: 'A',
-          isArray: true
         },
       },
       templates: {
         A: {
-          allow: ['*']
+          allow: ['*'],
+          info: {
+            isArray: 1,
+          },
         }
       }
     }
